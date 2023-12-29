@@ -1,0 +1,210 @@
+\documentclass{article}
+
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{thmtools}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{framed}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+
+\colorlet{LightGray}{White!90!Periwinkle}
+\colorlet{LightOrange}{Orange!15}
+\colorlet{LightGreen}{Green!15}
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+
+\declaretheoremstyle[name=Theorem,]{thmsty}
+\declaretheorem[style=thmsty,numberwithin=section]{theorem}
+\tcolorboxenvironment{theorem}{colback=LightGray}
+
+\declaretheoremstyle[name=Proposition,]{prosty}
+\declaretheorem[style=prosty,numberlike=theorem]{proposition}
+\tcolorboxenvironment{proposition}{colback=LightOrange}
+
+\declaretheoremstyle[name=Principle,]{prcpsty}
+\declaretheorem[style=prcpsty,numberlike=theorem]{principle}
+\tcolorboxenvironment{principle}{colback=LightGreen}
+
+\setstretch{1.2}
+\geometry{
+    textheight=9in,
+    textwidth=5.5in,
+    top=1in,
+    headheight=12pt,
+    headsep=25pt,
+    footskip=30pt
+}
+
+% ------------------------------------------------------------------------------
+
+\begin{document}
+
+% ------------------------------------------------------------------------------
+% Cover Page and ToC
+% ------------------------------------------------------------------------------
+
+\title{ \normalsize \textsc{}
+		\\ [2.0cm]
+		\HRule{1.5pt} \\
+		\LARGE \textbf{\uppercase{Automātu teorija}
+		\HRule{2.0pt} \\ [0.6cm] \LARGE{Eksāmena materiāli} \vspace*{10\baselineskip}}
+		}
+\date{}
+\author{\textbf{Author} \\ 
+		Automata guy \\
+		Riga \\
+		2024}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+% ------------------------------------------------------------------------------
+
+% \section{Examples}
+%
+% \begin{theorem}
+%     This is a theorem.
+% \end{theorem}
+%
+% \begin{proposition}
+%     This is a proposition.
+% \end{proposition}
+%
+% \begin{principle}
+%     This is a principle.
+% \end{principle}
+%
+% \subsection{Pictures}
+%
+% \begin{figure}[htbp]
+%     \center
+%     \includegraphics[scale=0.06]{img/photo.jpg}
+%     \caption{Sydney, NSW}
+% \end{figure}
+%
+% \subsection{Citation}
+%
+% This is a citation\cite{Eg}.
+%
+% \newpage
+
+% ------------------------------------------------------------------------------
+% Reference and Cited Works
+% ------------------------------------------------------------------------------
+
+% \bibliographystyle{IEEEtran}
+% \bibliography{References.bib}
+
+% ------------------------------------------------------------------------------
+
+
+\section{Basics}
+
+\subsection{String}
+
+A string is a finite sequence, possibly empty, of symbols drawn from some
+alphabet . Given any alphabet , the shortest string that can be formed from 
+is the empty string, which we will write as . The set of all possible strings
+over an alphabet  is written *. This notation exploits the Kleene star
+operator, which we will define more generally below.
+
+\subsection{Language}
+
+A language is a (finite or infinite) set of strings over a finite alphabet .
+When we are talking about more than one language, we will use the notation L
+to mean the alphabet from which the strings in the language L are formed.
+
+\section{Regex}
+
+Elements of regex
+
+* - the asterisk indicates zero or more occurrences of the preceding element.
+For example, ab*c matches "ac", "abc", "abbc", "abbbc", and so on. 
+
++ - the plus sign indicates one or more occurrences of the preceding element.
+For example, ab+c matches "abc", "abbc", "abbbc", and so on, but not "ac". 
+
+\section{Finite state machines (FSM)}
+
+Formally, a deterministic FSM (or DFSM) M is a quintuple (K, , , s, A),
+where: • K is a finite set of states,
+
+\begin{itemize} \item $\Sigma$ is the input alphabet, \item $s \in K$ is the
+start state, \item $A \subseteq K$ is the set of accepting states, and \item
+$\sigma$ is the transition function. It maps from: \end{itemize}
+
+\begin{align*} K &\times \Sigma \to K \\ \end{align*}
+
+A configuration of a DFSM M is an element of K  *. Think of it as a snapshot
+of M. It captures the two things that can make a difference to M’s future
+behavior:
+
+• its current state • the input that is still left to read.
+
+M halts whenever it enters either an accepting or a rejecting configuration. It
+will do so immediately after reading the last character of its input.
+
+The language accepted by M, denoted L(M), is the set of all strings accepted by
+M.
+
+\subsection{}
+
+
+\subsection{Transducer}
+
+
+So far, we have used finite state machines as language recognizers. All we have cared about, in analyzing a machine
+M, is whether or not M ends in an accepting state. But it is a simple matter to augment our finite state model to allow
+for output at each step of a machine’s operation. Often, once we do that, we may cease to care about whether M
+actually accepts any strings. Many finite state transducers are loops that simply run forever, processing inputs.
+One simple kind of finite state transducer associates an output with each state of a machine M. That output is generated
+whenever M enters the associated state. Deterministic finite state transducers of this sort are called Moore machines,
+after their inventor Edward Moore. A Moore machine M is a seven-tuple (K, , O, , D, s, A), where:
+
+\begin{itemize}
+	\item K is a finite set of states,
+	\item  is an input alphabet,
+	\item O is an output alphabet,
+	\item s  K is the start state,
+	\item A  K is the set of accepting states (although for some applications this designation is not important),
+	\item  is the transition function. It is function from (K  ) to (K), and
+	\item D is the display or output function. It is a function from (K) to (O*).
+\end{itemize}
+
+A Moore machine M computes a function f(w) iff, when it reads the input string w, its output sequence is f(w).
+
+\subsection{Transducer}
+
+A nondeterministic FSM (or NDFSM) M is a quintuple (K, , , s, A), where:
+
+• K is a finite set of states,
+•  is an alphabet,
+• s  K is the start state,
+• A  K is the set of final states, and
+•  is the transition relation. It is a finite subset of:
+
+(K  (  {}))  K.
+
+In other words, each element of  contains a (state, input symbol or ) pair,
+and a new state. We define configuration, initial configuration, accepting
+configuration, yields-in-one-step, yields, and computation analogously to the
+way that we defined them for DFSMs. Let w be an element of *. Then we will say
+that:
+
+M accepts w iff at least one of its computations accepts. M rejects w iff none
+of its computations accepts. The language accepted by M, denoted L(M), is the
+set of all strings accepted by M.
+
+
+
+
+\end{document}
