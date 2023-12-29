@@ -52,8 +52,8 @@
 \title{ \normalsize \textsc{}
 		\\ [2.0cm]
 		\HRule{1.5pt} \\
-		\LARGE \textbf{\uppercase{Automātu teorija}
-		\HRule{2.0pt} \\ [0.6cm] \LARGE{Eksāmena materiāli} \vspace*{10\baselineskip}}
+		\LARGE \textbf{\uppercase{Automata theory}
+		\HRule{2.0pt} \\ [0.6cm] \LARGE{Exam materials} \vspace*{10\baselineskip}}
 		}
 \date{}
 \author{\textbf{Author} \\ 
@@ -112,39 +112,31 @@
 \subsection{String}
 
 A string is a finite sequence, possibly empty, of symbols drawn from some
-alphabet . Given any alphabet , the shortest string that can be formed from 
-is the empty string, which we will write as . The set of all possible strings
-over an alphabet  is written *. This notation exploits the Kleene star
+alphabet $\Sigma$. Given any alphabet $\Sigma$, the shortest string that can be formed from $\Sigma$
+is the empty string, which we will write as $\epsilon$. The set of all possible strings
+over an alphabet $\Sigma$ is written $\Sigma$*. This notation exploits the Kleene star
 operator, which we will define more generally below.
 
 \subsection{Language}
 
-A language is a (finite or infinite) set of strings over a finite alphabet .
-When we are talking about more than one language, we will use the notation L
+A language is a (finite or infinite) set of strings over a finite alphabet $\Sigma$.
+When we are talking about more than one language, we will use the notation $\Sigma_L$
 to mean the alphabet from which the strings in the language L are formed.
 
-\section{Regex}
-
-Elements of regex
-
-* - the asterisk indicates zero or more occurrences of the preceding element.
-For example, ab*c matches "ac", "abc", "abbc", "abbbc", and so on. 
-
-+ - the plus sign indicates one or more occurrences of the preceding element.
-For example, ab+c matches "abc", "abbc", "abbbc", and so on, but not "ac". 
 
 \section{Finite state machines (FSM)}
 
-Formally, a deterministic FSM (or DFSM) M is a quintuple (K, , , s, A),
+Formally, a deterministic FSM (or DFSM) M is a quintuple $(K, \Sigma, , s, A)$,
 where: • K is a finite set of states,
 
 \begin{itemize} \item $\Sigma$ is the input alphabet, \item $s \in K$ is the
 start state, \item $A \subseteq K$ is the set of accepting states, and \item
 $\sigma$ is the transition function. It maps from: \end{itemize}
 
+
 \begin{align*} K &\times \Sigma \to K \\ \end{align*}
 
-A configuration of a DFSM M is an element of K  *. Think of it as a snapshot
+A configuration of a DFSM M is an element of K  $\Sigma$*. Think of it as a snapshot
 of M. It captures the two things that can make a difference to M’s future
 behavior:
 
@@ -156,55 +148,193 @@ will do so immediately after reading the last character of its input.
 The language accepted by M, denoted L(M), is the set of all strings accepted by
 M.
 
-\subsection{}
+\subsection{Equivalence of states}
 
+\begin{enumerate}
+		\item Acceptor states $q$ and $q'$ are not equivalent if exactly one of
+		they have an accepting;
 
-\subsection{Transducer}
+		\item Transformer states $q$ and $q'$ are not equivalent if any inputs
+		for letter x print different letters $y \ne y'$;
 
+		\item The states $q$ and $q'$ of any automaton are not equivalent if any
+		for $x$ leads to nonequivalent states $f(q,x) \ne f(q',x)$;
 
-So far, we have used finite state machines as language recognizers. All we have cared about, in analyzing a machine
-M, is whether or not M ends in an accepting state. But it is a simple matter to augment our finite state model to allow
-for output at each step of a machine’s operation. Often, once we do that, we may cease to care about whether M
-actually accepts any strings. Many finite state transducers are loops that simply run forever, processing inputs.
-One simple kind of finite state transducer associates an output with each state of a machine M. That output is generated
-whenever M enters the associated state. Deterministic finite state transducers of this sort are called Moore machines,
-after their inventor Edward Moore. A Moore machine M is a seven-tuple (K, , O, , D, s, A), where:
+		\item Otherwise, states $q$ and $q'$ are equivalent: $q \ne q'$.
+\end{enumerate}
+
+\subsection{Regex}
+
+Elements of regex
 
 \begin{itemize}
-	\item K is a finite set of states,
-	\item  is an input alphabet,
-	\item O is an output alphabet,
-	\item s  K is the start state,
-	\item A  K is the set of accepting states (although for some applications this designation is not important),
-	\item  is the transition function. It is function from (K  ) to (K), and
-	\item D is the display or output function. It is a function from (K) to (O*).
+	 
+		\item * asterisk indicates zero or more occurrences of the preceding element.
+		For example, ab*c matches "ac", "abc", "abbc", "abbbc", and so on. 
+
+		\item + the plus sign indicates one or more occurrences of the preceding element.
+		For example, ab+c matches "abc", "abbc", "abbbc", and so on, but not "ac". 
 \end{itemize}
 
-A Moore machine M computes a function f(w) iff, when it reads the input string w, its output sequence is f(w).
+\subsection{Example: FSM to Regex}
 
-\subsection{Transducer}
-
-A nondeterministic FSM (or NDFSM) M is a quintuple (K, , , s, A), where:
-
-• K is a finite set of states,
-•  is an alphabet,
-• s  K is the start state,
-• A  K is the set of final states, and
-•  is the transition relation. It is a finite subset of:
-
-(K  (  {}))  K.
-
-In other words, each element of  contains a (state, input symbol or ) pair,
-and a new state. We define configuration, initial configuration, accepting
-configuration, yields-in-one-step, yields, and computation analogously to the
-way that we defined them for DFSMs. Let w be an element of *. Then we will say
-that:
-
-M accepts w iff at least one of its computations accepts. M rejects w iff none
-of its computations accepts. The language accepted by M, denoted L(M), is the
-set of all strings accepted by M.
+\subsection{Example: Regex to FSM}
 
 
+\subsection{Transducer (Transformator)}
 
+This definition for a deterministic finite state transducer permits each
+machine to output any finite sequence of symbols as it makes each transition
+(in other words, as it reads each symbol of its input).  FSMs that associate
+outputs with transitions are called Mealy machines, after their inventor George
+Mealy.  A Mealy machine M is a six-tuple $(K, \Sigma, O, , s, A)$, where: 
+
+\begin{itemize}
+	\item $K$ is a finite set of states,
+	\item $\Sigma$ is an input alphabet,
+	\item $O$ is an output alphabet,
+	\item $s  K$ is the start state,
+	\item $A  K$ is the set of accepting states (although for some
+			applications this designation is not important),
+	\item $$ is the transition function. It is function $(K  \Sigma) to (K)$, and
+	\item $D$ is the display or output function. It is a function from $(K) to (O*)$.
+\end{itemize}
+
+A Mealy (transducer defined above) machine $M$ computes a function $f(w)$ $
+iff$, when it reads the input string $w$, its output sequence is $f(w)$. 
+
+\subsection{Pumping lemma for Regular Languages }
+
+$Theorem:$ If $L$ is a regular language, then: 
+
+\begin{align*}
+		\exists k \ge 1 ( \forall \>\text{strings} \> w \in L, where |w| \ge k (x, y, z (w = &xyz, \\
+		 |xy| &\le k, \\
+		 y &\ne \epsilon, and \\
+		\forallq &\ge 0 (xy^{q}z \in L)))). \\
+\end{align*}
+ 
+The Pumping Theorem tells us something that is true of every regular language.
+Generally, if we already know that a language is regular, we won’t particularly
+care about what the Pumping Theorem tells us about it.  But suppose that we are
+interested in some language $L$ and we want to know whether or not it is regular.
+If we could show that the claims made in the Pumping Theorem are not true of $L$,
+then we would know that $L$ is not regular.  It is in arguments such as this that
+we will find the Pumping Theorem very useful.  In particular, we will use it to
+construct proofs by contradiction.  We will say, “If $L$ were regular, then it
+would possess certain properties.  But it does not possess those properties.
+Therefore, it is not regular.” 
+
+
+\subsubsection{Example 8.8 }
+
+AnBn is not Regular.
+
+Let L be $AnBn = {a^nb^n : n != 0}$.  We can use the
+Pumping Theorem to show that L is not regular.  If it were, then there would
+exist some k such that any string w, where |w|  k, must satisfy the conditions
+of the theorem.  We show one sof the Pumping Theorem.  So there must exist x,
+y, and z, such that w = xyz, |xy|  k, y  , and q  0 (xyqz  L).  But we
+show that no such x, y, and z exist.  Since we must guarantee that |xy|  k, y
+must occur within the first k characters and so y = ap for some p.  Since we
+must guarantee that y  , p must be greater than 0.  Let q = 2. (In other
+words, we pump in one extra copy of y.)  The resulting string is ak+pbk.  The
+last condition of the Pumping Theorem states that this string must be in L, but
+it is not since it has more a’s than b’s.  Thus there exists at least one long
+string in L that fails to satisfy the conditions of the Pumping Theorem.  So L
+= AnBn is not regular. tring w that does not.  Let w = akbk.  Since |w| = 2k, w
+is long enough and it is in L, so it must satisfy the conditions 
+
+\section{Context-free languages and PDA}
+
+\subsection{PDA} 
+
+\subsubsection{Definition of a (Nondeterministic) PDA }
+
+A  pushdown automaton, or PDA, is a finite state machine that has been
+augmented by a single stack.  In a minute, we will present the formal
+definition of the PDA model that we will use.  But, before we do that, one
+caveat to readers of other books is in order.  There are several competing PDA
+definitions, from which we have chosen one to present here.  All are provably
+equivalent, in the sense that, for all i and j, if there exists a versioni PDA
+that accepts some language L then there also exists a versionj PDA that accepts
+L.  We’ll return to this issue in Section 12.5, where we will mention a few of
+the other models and sketch an equivalence proof.  For now, simply beware of
+the fact that other definitions are also in widespread use. 
+ 
+We will use the following definition:  A pushdown automaton (or PDA) M is a
+sixtuple (K, $\Sigma$, , , s, A), where: 
+ 
+• K is a finite set of states, 
+• $\Sigma$ is the input alphabet, 
+•  is the stack alphabet, 
+• s  K is the start state, 
+• A  K is the set of accepting states, and 
+•  is the transition relation.  It is a finite subset of  
+ 
+\begin{align}
+		(K($\Sigma$  {})  *)(K*).   
+\end{align}
+ 
+state       input or     string of symbols to pop                         state             string of symbols to 
+ 
+      from top of stack 
+                                push on top of stack 
+ We will use the following notational convention for describing M’s stack as a string:  The top of the stack is to the left 
+of the string.  So: 
+ 
+ 
+ 
+c 
+ 
+ 
+a 
+will be written as:  
+ 
+cab 
+ 
+ 
+b 
+ 
+If a sequence c1c2…cn of characters is pushed onto the stack, they will be
+pushed rightmost first, so if the value of the stack before the push was s, the
+value after the push will be c1c2…cns.   
+ 
+ 
+A configuration of a PDA M is an element of K  $\Sigma$*  *.  It captures the three
+things that can make a difference to M’s future behavior: 
+ 
+• its current state, • the input that is still left to read, and • the contents
+of its stack. 
+ 
+The initial configuration of a PDA M, on input w, is (s, w, ).
+
+Note two things about what a transition ((q1, c, 1), (q2, 2)) says about how
+M manipulates its stack: 
+ 
+• M may only take the transition if the string 1 matches the current top of
+the stack.  If it does, and the transition is taken, then M pops 1 and then
+pushes 2.  M cannot “peek” at the top of its stack without popping off the
+values that it examines. 
+ 
+• If 1 = , then M must match  against the top of the stack.  But  matches
+everywhere.  So letting 1 be  is equivalent to saying “without bothering to
+check the current value of the stack”.  It is not equivalent to saying, “if the
+stack is empty.”  In our definition, there is no way to say that directly,
+although we will see that we can create a way by letting M, before it does
+anything else, push a special marker onto the stack.  Then, whenever that
+marker is on the top of the stack, the stack is otherwise empty. 
+
+
+\subsection{Probabalistic automata}
+
+$Q$ – stāvokļu kopa
+$X$ – ieejas alfabēts
+$p$ – pārejas funkcija: $Q \times X \times Q → [0;1]$ vai $X \to {[0;1]}^{|Q|\times|Q|}$
+$q_0 \in Q$ 
+$Q_A \subseteq Q$ 
+$q_0$ – sākumstāvoklis (dažreiz q0 ∈ [0;1]|Q|)
+$q_A$ – akceptējošie stāvokļi (dažreiz QA ∈ [0;1]|Q|)
+$\lambda \in [0;1]$ – akceptēšanas slieksnis (dažreiz lambdas nav)
 
 \end{document}

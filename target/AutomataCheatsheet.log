@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Arch Linux) (preloaded format=xelatex 2023.12.21)  28 DEC 2023 18:43
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Arch Linux) (preloaded format=xelatex 2023.12.21)  29 DEC 2023 18:25
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -745,41 +745,268 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout5 = `AutomataCheatsheet.toc'.
 
  [2]
-Missing character: There is no  (U+F053) in font [lmroman10-regular]:mapping=t
+Missing character: There is no  ("F064) in font cmr10!
+Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
 ex-text;!
-Missing character: There is no  (U+F053) in font [lmroman10-regular]:mapping=t
+[3]
+Missing character: There is no  ("F064) in font cmr10!
+Missing character: There is no  ("F0CE) in font cmr10!
+Missing character: There is no  ("F0CD) in font cmr10!
+Missing character: There is no  ("F064) in font cmr10!
+Missing character: There is no  ("F0B4) in font cmr10!
+Missing character: There is no  ("F022) in font cmr10!
+Missing character: There is no  ("F024) in font cmr10!
+Missing character: There is no  ("F022) in font cmr10!
+Missing character: There is no  ("F022) in font cmr10!
+Missing character: There is no  ("F024) in font cmr10!
+Missing character: There is no  ("F022) in font cmr10!
+[4]
+Missing character: There is no  (U+F0B3) in font [lmroman10-regular]:mapping=t
 ex-text;!
-Missing character: There is no  (U+F053) in font [lmroman10-regular]:mapping=t
+Missing character: There is no  (U+F0A3) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F0B9) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
 ex-text;!
-Missing character: There is no  (U+F053) in font [lmroman10-regular]:mapping=t
+Missing character: There is no  (U+F022) in font [lmroman10-regular]:mapping=t
 ex-text;!
-Missing character: There is no  (U+F053) in font [lmroman10-regular]:mapping=t
+Missing character: There is no  (U+F0B3) in font [lmroman10-regular]:mapping=t
 ex-text;!
-Missing character: There is no  (U+F053) in font [lmroman10-regular]:mapping=t
+Missing character: There is no  (U+F0CE) in font [lmroman10-regular]:mapping=t
 ex-text;!
-Missing character: There is no  (U+F053) in font [lmroman10-regular]:mapping=t
+Missing character: There is no  (U+F0A3) in font [lmroman10-regular]:mapping=t
 ex-text;!
-Missing character: There is no  (U+F053) in font [lmroman10-regular]:mapping=t
+Missing character: There is no  (U+F0B9) in font [lmroman10-regular]:mapping=t
 ex-text;!
-Missing character: There is no  (U+F064) in font [lmroman10-regular]:mapping=t
+Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F047) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F044) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F047) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F0CE) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F0CD) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F044) in font [lmroman10-regular]:mapping=t
+ex-text;!
+! Missing } inserted.
+<inserted text> 
+                }
+l.277 \end{align}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+Missing character: There is no  ("F0B4) in font cmr10!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.277 \end{align}
+                 
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Missing character: There is no  (U+F0C8) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
 ex-text;!
-Missing character: There is no  (U+F053) in font [lmroman10-regular]:mapping=t
+Missing character: There is no  (U+F047) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[3] (target/AutomataCheatsheet.aux)
+Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F047) in font [lmroman10-regular]:mapping=t
+ex-text;!
+! Missing { inserted.
+<inserted text> 
+                {
+l.277 \end{align}
+                 
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+! Extra }, or forgotten $.
+<recently read> }
+                 
+l.277 \end{align}
+                 
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.277 \end{align}
+                 
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.277 \end{align}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.277 \end{align}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+Missing character: There is no  ("F0B4) in font cmr10!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.277 \end{align}
+                 
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Missing character: There is no  (U+F0C8) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F047) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F047) in font [lmroman10-regular]:mapping=t
+ex-text;!
+! Extra }, or forgotten $.
+<recently read> }
+                 
+l.277 \end{align}
+                 
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.277 \end{align}
+                 
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.277 \end{align}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.277 \end{align}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Misplaced \omit.
+\math@cr@@@ ...@ \@ne \add@amps \maxfields@ \omit 
+                                                  \kern -\alignsep@ \iftag@ ...
+l.277 \end{align}
+                 
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Missing { inserted.
+<inserted text> 
+                {
+l.277 \end{align}
+                 
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+[5]
+Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F047) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F067) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F067) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F067) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F067) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F067) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F067) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F067) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no → ("2192) in font cmr10!
+Missing character: There is no ∈ (U+2208) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ∈ (U+2208) in font [lmroman10-regular]:mapping=t
+ex-text;!
+[6] (target/AutomataCheatsheet.aux)
 Package rerunfilecheck Info: File `AutomataCheatsheet.out' has not changed.
-(rerunfilecheck)             Checksum: 1986536FD249EC674970C23EDD7B1B94;518.
+(rerunfilecheck)             Checksum: 1963F560058AB772F12CDC0FE24226FE;2356.
  ) 
 Here is how much of TeX's memory you used:
- 21838 strings out of 478682
- 408471 string characters out of 5849664
- 1853018 words of memory out of 5000000
- 41565 multiletter control sequences out of 15000+600000
- 519063 words of font info for 68 fonts, out of 8000000 for 9000
+ 21848 strings out of 478682
+ 408693 string characters out of 5849664
+ 1857018 words of memory out of 5000000
+ 41571 multiletter control sequences out of 15000+600000
+ 519079 words of font info for 70 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 83i,8n,80p,440b,338s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,10n,80p,440b,396s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on target/AutomataCheatsheet.pdf (3 pages).
+Output written on target/AutomataCheatsheet.pdf (6 pages).
