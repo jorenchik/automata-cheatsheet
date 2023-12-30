@@ -11,7 +11,29 @@
 \usepackage[english]{babel}
 \usepackage{framed}
 \usepackage[dvipsnames]{xcolor}
-\usepackage{tcolorbox}
+\usepackage[most]{tcolorbox}
+\usepackage{parskip} % This package adjusts paragraph spacing properly
+
+\setlength{\parindent}{0pt} % Removes the paragraph indent
+\setlength{\parskip}{1em} % Adds vertical space between paragraphs
+% The parskip package already sets the parskip to a non-zero value.
+
+
+\tcbset{
+    frame code={}
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!70,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=0mm,
+    boxsep=5pt,
+    arc=0pt,outer arc=0pt,
+    }
+
 
 \colorlet{LightGray}{White!90!Periwinkle}
 \colorlet{LightOrange}{Orange!15}
@@ -109,6 +131,8 @@
 
 \section{Basics}
 
+Overview of basic definitions.
+
 \subsection{String}
 
 A string is a finite sequence, possibly empty, of symbols drawn from some
@@ -124,17 +148,86 @@ When we are talking about more than one language, we will use the notation $\Sig
 to mean the alphabet from which the strings in the language L are formed.
 
 
+\subsection{Alphabet}
+An alphabet, denoted as $\Sigma$, is a non-empty finite set of symbols. These
+symbols are the basic units used to construct strings. For example, $\Sigma =
+\{a, b, c\}$ is an alphabet consisting of the symbols 'a', 'b', and 'c'.
+
+\subsection{Kleene Star}
+The Kleene star, denoted as $\Sigma^*$, is the set of all strings of finite
+length that can be constructed from the alphabet $\Sigma$. This includes the
+empty string $\epsilon$, as well as all possible concatenations of symbols from
+$\Sigma$.
+
+\subsection{Concatenation}
+Concatenation is an operation that links two strings end to end. For strings
+$x$ and $y$, the concatenation is denoted $xy$. If $L_1$ and $L_2$ are
+languages, their concatenation is $L_1L_2 = \{xy | x \in L_1 \text{ and } y \in
+L_2\}$.
+
+\subsection{Substrings, Prefixes, and Suffixes}
+A substring of a string is any sequence of consecutive symbols from that
+string. A prefix is a substring that includes the first symbol of the string,
+and a suffix is a substring that includes the last symbol of the string. For a
+string $s$, a substring $t$ is such that $s = xty$ for some strings $x$ and
+$y$.
+
+\subsection{Reversal}
+The reversal of a string $s$, denoted as $s^R$, is a string formed by writing
+the symbols of $s$ in reverse order. For example, if $s = "abc"$, then $s^R =
+"cba"$.
+
+
+\subsection{Language Operations}
+The union of languages $L_1$ and $L_2$, denoted by $L_1 \cup L_2$, is the set
+of strings that are in either $L_1$ or $L_2$ or both. The intersection, denoted
+by $L_1 \cap L_2$, is the set of strings that are in both $L_1$ and $L_2$. The
+difference, denoted by $L_1 - L_2$, is the set of strings that are in $L_1$ but
+not in $L_2$. The complement of a language $L$, denoted by $\overline{L}$, is
+the set of all strings over $\Sigma$ that are not in $L$.
+
+\subsection{Deterministic and Nondeterministic Machines}
+Deterministic machines are computational models where for every state and
+input, there is exactly one transition to a subsequent state. Nondeterministic
+machines can have multiple possible transitions for a state and input pair.
+
+\subsection{Transition Function}
+The transition function of an automaton is a mapping from the cross product of
+the state set and the input alphabet (including $\epsilon$ for nondeterministic
+automata) to the power set of the state set. It defines the state transitions
+of the automaton.
+
+\subsection{Acceptance of a String}
+A string $s$ over an alphabet $\Sigma$ is said to be accepted by an automaton
+if, starting from the initial state and processing the symbols of $s$, the
+automaton enters a final or accepting state after reading the entire string.
+
+\subsection{Finite Automata}
+Finite automata are abstract computational models that consist of states,
+transitions between these states, and rules for starting and accepting inputs.
+They are used to recognize regular languages.
+
+
 \section{Finite state machines (FSM)}
 
+\subsection{Acceptor}
+
 Formally, a deterministic FSM (or DFSM) M is a quintuple $(K, \Sigma, , s, A)$,
-where: • K is a finite set of states,
-
-\begin{itemize} \item $\Sigma$ is the input alphabet, \item $s \in K$ is the
-start state, \item $A \subseteq K$ is the set of accepting states, and \item
-$\sigma$ is the transition function. It maps from: \end{itemize}
+where: 
 
 
-\begin{align*} K &\times \Sigma \to K \\ \end{align*}
+
+\begin{itemize} 
+\item $K$ is a finite set of states,
+\item $\Sigma$ is the input alphabet, 
+\item $s \in K$ is the
+start state, 
+\item $A \subseteq K$ is the set of accepting states, and 
+\item $\sigma$ is the transition function. It maps from:
+
+		\begin{align*} K &\times \Sigma \to K \\ \end{align*}
+
+\end{itemize}
 
 A configuration of a DFSM M is an element of K  $\Sigma$*. Think of it as a snapshot
 of M. It captures the two things that can make a difference to M’s future
@@ -163,24 +256,6 @@ M.
 		\item Otherwise, states $q$ and $q'$ are equivalent: $q \ne q'$.
 \end{enumerate}
 
-\subsection{Regex}
-
-Elements of regex
-
-\begin{itemize}
-	 
-		\item * asterisk indicates zero or more occurrences of the preceding element.
-		For example, ab*c matches "ac", "abc", "abbc", "abbbc", and so on. 
-
-		\item + the plus sign indicates one or more occurrences of the preceding element.
-		For example, ab+c matches "abc", "abbc", "abbbc", and so on, but not "ac". 
-\end{itemize}
-
-\subsection{Example: FSM to Regex}
-
-\subsection{Example: Regex to FSM}
-
-
 \subsection{Transducer (Transformator)}
 
 This definition for a deterministic finite state transducer permits each
@@ -193,24 +268,58 @@ Mealy.  A Mealy machine M is a six-tuple $(K, \Sigma, O, , s, A)$, where:
 	\item $K$ is a finite set of states,
 	\item $\Sigma$ is an input alphabet,
 	\item $O$ is an output alphabet,
-	\item $s  K$ is the start state,
-	\item $A  K$ is the set of accepting states (although for some
-			applications this designation is not important),
-	\item $$ is the transition function. It is function $(K  \Sigma) to (K)$, and
-	\item $D$ is the display or output function. It is a function from $(K) to (O*)$.
+	\item $s \in K$ is the start state,
+	\item $A \subseteq K $ is the set of accepting states (although for some applications this designation is not important),
+	\item $\sigma$ is the transition function. It is function $(K \times \Sigma) \to (K)$, and
+	\item $D$ is the display or output function. It is a function from $(K) \to (O^*)$.
 \end{itemize}
 
 A Mealy (transducer defined above) machine $M$ computes a function $f(w)$ $
 iff$, when it reads the input string $w$, its output sequence is $f(w)$. 
 
+\subsubsection{Not on determinism}
+
+
+\subsection{Note on Determinism of Transducers}
+
+Transducers are a class of automata used to model systems that transform input
+sequences into output sequences. Moore and Mealy machines are two types of
+transducers commonly studied in automata theory.
+
+Both Moore and Mealy machines are inherently deterministic. In a deterministic
+transducer:
+
+\begin{itemize}
+  \item Each state transition is uniquely determined by the current state and input symbol. The transition function $\delta$ of a Moore or Mealy machine maps each pair of current state and input symbol to exactly one next state.
+  \item In the case of Moore machines, the output function $\lambda$ maps each state to exactly one output symbol, whereas in Mealy machines, the output function $\omega$ maps each pair of current state and input symbol to exactly one output symbol.
+\end{itemize}
+
+Determinism ensures that for any given input sequence, the transducer will
+always produce the same output sequence and end in the same final state,
+providing predictability and repeatability, which are essential properties for
+many practical applications.
+The concept of nondeterminism can be extended to transducers; however, this is not standard in classical automata.
+
+\subsection{Probabalistic automata}
+
+\begin{itemize}
+	\item $Q$ – set of states
+	\item $X$ – input alphabet
+	\item $p$ – transition function: $Q \times X \times Q → [0;1]$ or $X \to {[0;1]}^{|Q|\times|Q|}$
+	\item $q_0 \in Q$
+	\item $Q_A \subseteq Q$
+	\item $q_0$ – initial state (sometimes $q0 \in [0;1]^{|Q|}$)
+	\item $q_A$ – accepting states (sometimes $Q_A ∈ [0;1]^{|Q|}$) \item $\lambda \in [0;1]$ – acceptance threshold (sometimes there is no $\lambda$) 
+\end{itemize}
+
 \subsection{Pumping lemma for Regular Languages }
 
-$Theorem:$ If $L$ is a regular language, then: 
+\textbf{Theorem:} If $L$ is a regular language, then: 
 
 \begin{align*}
 		\exists k \ge 1 ( \forall \>\text{strings} \> w \in L, where |w| \ge k (x, y, z (w = &xyz, \\
 		 |xy| &\le k, \\
-		 y &\ne \epsilon, and \\
+		 y &\ne \epsilon, \text{and} \\
 		\forallq &\ge 0 (xy^{q}z \in L)))). \\
 \end{align*}
  
@@ -226,24 +335,164 @@ would possess certain properties.  But it does not possess those properties.
 Therefore, it is not regular.” 
 
 
-\subsubsection{Example 8.8 }
+The Pumping Theorem tells us something that is true of every regular language.
+Generally, if we already know that a language is regular, we won’t particularly
+care about what the Pumping Theorem tells us about it. But suppose that we are
+interested in some language L and we want to know whether or not it is regular.
+If we could show that the claims made in the Pumping Theorem are not true of L,
+then we would know that L is not regular. It is in arguments such as this that
+we will find the Pumping Theorem very useful. In particular, we will use it to
+construct proofs by contradiction. We will say, “If L were regular, then it
+would possess certain properties. But it does not possess those properties.
+Therefore, it is not regular.”
 
-AnBn is not Regular.
+To make maximum use of the Pumping Theorem’s requirement that y fall in the
+first k characters, it is often a good idea to choose a string w that is
+substantially longer than the k characters required by the theorem. In
+particular, if w can be chosen so that there is a uniform first region of
+length at least k, it may be possible to consider just a single case for where
+y can fall. The Pumping Theorem inspires poets , as we’ll see in Chapter 10.
+AnBn is a simple language that illustrates the kind of property that
+characterizes languages that aren’t regular. It isn’t of much practical
+importance, but it is typical of a family of languages, many of which are of
+more practical significance. In the next example, we consider Bal, the language
+of balanced parentheses. The structure of Bal is very similar to that of AnBn.
+Bal is important because most languages for describing arithmetic expressions,
+Boolean queries, and markup systems require balanced delimiters.
 
-Let L be $AnBn = {a^nb^n : n != 0}$.  We can use the
+\subsubsection{Example: Even palindrome language is not regular}
+
+The Even Palindrome Language is Not Regular Let L be PalEven = {ww : w $\in$ {a,
+b}*}. PalEven is the language of even-length palindromes of a’s and b’s. We can
+use the Pumping Theorem to show that PalEven is not regular. If it were, then
+there would exist some k such that any string w, where |w|  k, must satisfy
+the conditions of the theorem. We show one string w that does not. (Note here
+that the variable w used in the definition of L is different from the variable
+w mentioned in the Pumping Theorem.) We will choose w so that we only have to
+consider one case for where y could fall. Let w = akbkbkak. Since |w| = 4k and
+w is in L, w must satisfy the conditions of the Pumping Theorem. So there must
+exist x, y, and z, such that w = xyz, |xy|  k, y  $\epsilon$, and q  0 (xyqz $\in$ L).
+Since |xy|  k, y must occur within the first k characters and so y = ap for
+some p. Since y  $\epsilon$, p must be greater than 0. Let q = 2. The resulting string
+is ak+pbkbkak. If p is odd, then this string is not in PalEven because all
+strings in PalEven have even length. If p is even then it is at least 2, so the
+first half of the string has more a’s than the second half does, so it is not
+in PalEven. So L = PalEven is not regular.
+
+\subsubsection{Example: $A^nB^n$ language is not regular }
+
+AnBn is not Regular. Let L be $AnBn = {a^nb^n : n != 0}$.  We can use the
 Pumping Theorem to show that L is not regular.  If it were, then there would
 exist some k such that any string w, where |w|  k, must satisfy the conditions
 of the theorem.  We show one sof the Pumping Theorem.  So there must exist x,
-y, and z, such that w = xyz, |xy|  k, y  , and q  0 (xyqz  L).  But we
+y, and z, such that w = xyz, |xy|  k, y  $\epsilon$, and q  0 (xyqz $\in$ L).  But we
 show that no such x, y, and z exist.  Since we must guarantee that |xy|  k, y
 must occur within the first k characters and so y = ap for some p.  Since we
-must guarantee that y  , p must be greater than 0.  Let q = 2. (In other
+must guarantee that y  $\epsilon$, p must be greater than 0.  Let q = 2. (In other
 words, we pump in one extra copy of y.)  The resulting string is ak+pbk.  The
 last condition of the Pumping Theorem states that this string must be in L, but
 it is not since it has more a’s than b’s.  Thus there exists at least one long
 string in L that fails to satisfy the conditions of the Pumping Theorem.  So L
 = AnBn is not regular. tring w that does not.  Let w = akbk.  Since |w| = 2k, w
 is long enough and it is in L, so it must satisfy the conditions 
+
+
+\section{Regex (Regular expressions)}
+
+A regular expression over an alphabet $\Sigma$ is a formal way of representing
+a regular language. It is constructed from members of $\Sigma$ using union
+(denoted by $+$), concatenation, Kleene star, and parentheses for grouping.
+
+\begin{itemize}
+	 
+		\item * asterisk indicates zero or more occurrences of the preceding element.
+		For example, ab*c matches "ac", "abc", "abbc", "abbbc", and so on. 
+
+		\item + the plus sign indicates one or more occurrences of the preceding element.
+		For example, ab+c matches "abc", "abbc", "abbbc", and so on, but not "ac". 
+\end{itemize}
+
+\subsection{Building Regex from FSM}
+
+
+\begin{itemize}
+
+\item If $\alpha$ is the regular expression $\beta \cup \gamma$ and if both $L(\beta)$ and $L(\gamma)$ are regular,
+then we construct $M_3 = (K_3, \Sigma, \Delta_3, s_3, A_3)$ such that $L(M_3) = L(\alpha) = L(\beta) \cup L(\gamma)$. If necessary, rename the states of $M_1$ and $M_2$ so that $K_1  K_2 = $. Create
+a new start state, $s_3$, and connect it to the start states of $M_1$ and $M_2$ via
+$\epsilon$-transitions. $M_3$ accepts if either $M_1$ or $M_2$ accepts. So $M_3 = ({s_3} \cup K_1 \cup K_2, \Sigma, \Delta_3, s_3, A_1 \cup A_2)$, where $\Delta3 = \Delta1 \cup \Delta2 \cup {((s_3, \epsilon), s_1), ((s_3, \epsilon), s_2)}$.
+
+\item If $\alpha$ is the regular expression $\beta\gamma$ and if both $L(\beta)$ and $L(\gamma)$ are regular, then
+we construct $M_3 = (K_3, \Sigma, \Delta_3, s_3, A_3)$ such that $L(M_3) = L(\alpha) = L(\beta) L(\gamma)$. If
+necessary, rename the states of $M_1$ and $M_2$ so that $K_1 \cap K_2 = \emptyset$. We will build $M_3$
+by connecting every accepting state of $M_1$ to the start state of $M_2$ via an
+$\epsilon$-transition. $M_3$ will start in the start state of $M_1$ and will accept if $M_2$
+does. So $M_3 = (K_1 \cup K_2, \Sigma, \Delta_3, s_1, A_2)$, where $\Delta_3 = \Delta_1 \cup \Delta_2 \cup \{((q, \epsilon), s_2) : q
+\in A_1\}$.
+
+\item If $\alpha$ is the regular expression $\beta^*$ and if $L(\beta)$ is regular, then we construct
+$M_2 = (K_2, \Sigma, \Delta_2, s_2, A_2)$ such that $L(M_2) = L(\alpha) = L(\beta)^*$. We will create a new
+start state $s_2$ and make it accepting, thus assuring that $M_2$ accepts $\epsilon$. (We need
+a new start state because it is possible that $s_1$, the start state of $M_1$, is not
+an accepting state. If it isn't and if it is reachable via any input string
+other than $\epsilon$, then simply making it an accepting state would cause $M_2$ to accept
+strings that are not in $(L(M_1))^*$.) We link the new $s_2$ to $s_1$ via an
+$\epsilon$-transition. Finally, we create $\epsilon$-transitions from each of $M_1$’s accepting
+states back to $s_1$. So $M_2 = (\{s_2\} \cup K_1, \Sigma, \Delta_2, s_2, \{s_2\} \cup A_1)$, where $\Delta_2 = \Delta_1 \cup
+\{((s_2, \epsilon), s_1)\} \cup \{((q, \epsilon), s_1) : q \in A_1\}$. 
+
+\end{itemize}
+
+Notice that the machines that these constructions build are typically highly
+nondeterministic because of their use of $\epsilon$-transitions. They also typically
+have a large number of unnecessary states. But, as a practical matter, that is
+not a problem since, given an arbitrary NDFSM $M$, we have an algorithm that can
+construct an equivalent DFSM $M'$. We also have an algorithm that can minimize $M'$.
+
+\subsubsection{Example: Building FSM from Regex}
+
+\includegraphics[width=\textwidth]{img/regextofsm1.png}
+\includegraphics[width=\textwidth]{img/regextofsm2.png}
+
+\subsection{Building Regex from FSM}
+
+Next we must show how to build FSMs to accept languages that are defined by
+regular expressions that exploit the operations of concatenation, union, and
+Kleene star. Let $\beta$ and $\gamma$ be regular expressions that define
+languages over the alphabet $\Sigma$. If $L(\beta)$ is regular, then it is
+accepted by some FSM $M_1 = (K_1, \Sigma, \Delta_1, s_1, A_1)$. If $L(\gamma)$
+is regular, then it is accepted by some $FSM M_2 = (K_2, \Sigma, \Delta_2, s_2,
+A_2)$.
+
+fsmtoregexheuristic(M: FSM) =
+\begin{enumerate}
+  \item Remove from $M$ any states that are unreachable from the start state.
+
+  \item If $M$ has no accepting states then halt and return the simple
+  regular expression $\emptyset$.
+  
+  \item If the start state of $M$ is part of a loop (i.e., it has any
+  transitions coming into it), create a new start state $s$
+  and connect $s$ to $M$’s start state via an
+  $\epsilon$-transition. This new start state $s$ will have
+  no transitions into it.
+  
+  \item If there is more than one accepting state of $M$ or if there is
+		  just one but there are any transitions out of it,
+		  create a new accepting state and connect each
+		  of $M$’s accepting states to it via an
+		  $\epsilon$-transition. Remove the old accepting states
+		  from the set of accepting states. Note that the
+		  new accepting state will have no transitions
+		  out from it.
+\end{enumerate}
+
+\subsubsection{Example: Building Regex from FSM}
+
+
+%     \includegraphics[scale=0.06]{img/photo.jpg}
+\includegraphics[width=\textwidth]{img/fsmtoregex1.png}
+\includegraphics[width=\textwidth]{img/fsmtoregex2.png}
 
 \section{Context-free languages and PDA}
 
@@ -263,62 +512,40 @@ the other models and sketch an equivalence proof.  For now, simply beware of
 the fact that other definitions are also in widespread use. 
  
 We will use the following definition:  A pushdown automaton (or PDA) M is a
-sixtuple (K, $\Sigma$, , , s, A), where: 
+sixtuple (K, $\Sigma$, $\Sum$, , s, A), where: 
  
-• K is a finite set of states, 
-• $\Sigma$ is the input alphabet, 
-•  is the stack alphabet, 
-• s  K is the start state, 
-• A  K is the set of accepting states, and 
-•  is the transition relation.  It is a finite subset of  
- 
-\begin{align}
-		(K($\Sigma$  {})  *)(K*).   
-\end{align}
- 
-state       input or     string of symbols to pop                         state             string of symbols to 
- 
-      from top of stack 
-                                push on top of stack 
- We will use the following notational convention for describing M’s stack as a string:  The top of the stack is to the left 
-of the string.  So: 
- 
- 
- 
-c 
- 
- 
-a 
-will be written as:  
- 
-cab 
- 
- 
-b 
- 
+\begin{itemize}
+	\item $K$ is a finite set of states, 
+	\item $\Sigma$ is the input alphabet, 
+	\item $\Sum$ is the stack alphabet, 
+	\item $s \in K$ is the start state, 
+	\item $A \subseteq K$ K is the set of accepting states, and 
+	\item $\Delta$ is the transition relation.  It is a finite subset of  
+\begin{align*}
+\left(
+    \left( K \times (\Sigma \cup \{\epsilon\}) \times \Gamma^* \right),
+    \times
+\right)
+\end{align*}
+\end{itemize}
+
+ We will use the following notational convention for describing M’s stack as a
+ string:  The top of the stack is to the left of the string
+
 If a sequence c1c2…cn of characters is pushed onto the stack, they will be
 pushed rightmost first, so if the value of the stack before the push was s, the
 value after the push will be c1c2…cns.   
- 
- 
-A configuration of a PDA M is an element of K  $\Sigma$*  *.  It captures the three
-things that can make a difference to M’s future behavior: 
- 
-• its current state, • the input that is still left to read, and • the contents
-of its stack. 
- 
-The initial configuration of a PDA M, on input w, is (s, w, ).
 
-Note two things about what a transition ((q1, c, 1), (q2, 2)) says about how
-M manipulates its stack: 
+Note two things about what a transition ((q1, c, $\gamma_1$), (q2, $\gamma_2$))
+says about how M manipulates its stack:
  
-• M may only take the transition if the string 1 matches the current top of
-the stack.  If it does, and the transition is taken, then M pops 1 and then
-pushes 2.  M cannot “peek” at the top of its stack without popping off the
+• M may only take the transition if the string $\gamma_1$ matches the current top of
+the stack.  If it does, and the transition is taken, then M pops $\gamma_1$ and then
+pushes $\gamma_2$.  M cannot “peek” at the top of its stack without popping off the
 values that it examines. 
  
-• If 1 = , then M must match  against the top of the stack.  But  matches
-everywhere.  So letting 1 be  is equivalent to saying “without bothering to
+• If $\gamma_1$ = $\epsilon$, then M must match $\epsilon$ against the top of the stack.  But $\epsilon$ matches
+everywhere.  So letting $\gamma_1$ be $\epsilon$ is equivalent to saying “without bothering to
 check the current value of the stack”.  It is not equivalent to saying, “if the
 stack is empty.”  In our definition, there is no way to say that directly,
 although we will see that we can create a way by letting M, before it does
@@ -326,15 +553,5 @@ anything else, push a special marker onto the stack.  Then, whenever that
 marker is on the top of the stack, the stack is otherwise empty. 
 
 
-\subsection{Probabalistic automata}
-
-$Q$ – stāvokļu kopa
-$X$ – ieejas alfabēts
-$p$ – pārejas funkcija: $Q \times X \times Q → [0;1]$ vai $X \to {[0;1]}^{|Q|\times|Q|}$
-$q_0 \in Q$ 
-$Q_A \subseteq Q$ 
-$q_0$ – sākumstāvoklis (dažreiz q0 ∈ [0;1]|Q|)
-$q_A$ – akceptējošie stāvokļi (dažreiz QA ∈ [0;1]|Q|)
-$\lambda \in [0;1]$ – akceptēšanas slieksnis (dažreiz lambdas nav)
 
 \end{document}

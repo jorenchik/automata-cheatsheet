@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Arch Linux) (preloaded format=xelatex 2023.12.21)  29 DEC 2023 18:25
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Arch Linux) (preloaded format=xelatex 2023.12.21)  30 DEC 2023 15:47
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -635,57 +635,209 @@ Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 \tcb@temp=\box68
 \tcb@temp=\box69
 \tcb@temp=\box70
+
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
+Library (tcolorbox): 'tcbraster.code.tex' version '6.0.1'
+\c@tcbrastercolumn=\count304
+\c@tcbrasterrow=\count305
+\c@tcbrasternum=\count306
+\c@tcbraster=\count307
+) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '6.0.1'
+(/usr/share/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen264
+\pgffor@skip=\dimen265
+\pgffor@stack=\toks48
+\pgffor@toks=\toks49
+))
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.te
+x
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count308
+\pgfplotmarksize=\dimen266
+)
+\tikz@lastx=\dimen267
+\tikz@lasty=\dimen268
+\tikz@lastxsaved=\dimen269
+\tikz@lastysaved=\dimen270
+\tikz@lastmovetox=\dimen271
+\tikz@lastmovetoy=\dimen272
+\tikzleveldistance=\dimen273
+\tikzsiblingdistance=\dimen274
+\tikz@figbox=\box71
+\tikz@figbox@bg=\box72
+\tikz@tempbox=\box73
+\tikz@tempbox@bg=\box74
+\tikztreelevel=\count309
+\tikznumberofchildren=\count310
+\tikznumberofcurrentchild=\count311
+\tikz@fig@count=\count312
+ (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count313
+\pgfmatrixcurrentcolumn=\count314
+\pgf@matrix@numberofcolumns=\count315
+)
+\tikz@expandcount=\count316
+
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+topaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+(/usr/share/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
+Package: tikzfill.image 2022/07/20 v1.0.0 Image filling library for TikZ
+
+(/usr/share/texmf-dist/tex/latex/tikzfill/tikzfill-common.sty
+Package: tikzfill-common 2022/07/20 v1.0.0 Auxiliary code for tikzfill
+)
+(/usr/share/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.tex
+File: tikzlibraryfill.image.code.tex 2022/07/20 v1.0.0 Image filling library
+\l__tikzfill_img_box=\box75
+))
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.0.1'
+)) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.0.1'
+(/usr/share/texmf-dist/tex/latex/pdfcol/pdfcol.sty
+Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
+Package pdfcol Info: Interface disabled because of missing PDF mode of pdfTeX.
+)
+Package pdfcol Info: pdfTeX's color stacks are not available.
+\tcb@testbox=\box76
+\tcb@totalupperbox=\box77
+\tcb@totallowerbox=\box78
+)
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
+Library (tcolorbox): 'tcbhooks.code.tex' version '6.0.1'
+) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '6.0.1'
+) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbfitting.code.tex
+Library (tcolorbox): 'tcbfitting.code.tex' version '6.0.1'
+\tcbfitdim=\dimen275
+\tcb@lowerfitdim=\dimen276
+\tcb@upperfitdim=\dimen277
+\tcb@cur@hbadness=\count317
+) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcblistingsutf8.code.tex
+Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.0.1'
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcblistings.code.tex
+Library (tcolorbox): 'tcblistings.code.tex' version '6.0.1'
+(/usr/share/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count318
+\lst@gtempboxa=\box79
+\lst@token=\toks50
+\lst@length=\count319
+\lst@currlwidth=\dimen278
+\lst@column=\count320
+\lst@pos=\count321
+\lst@lostspace=\dimen279
+\lst@width=\dimen280
+\lst@newlines=\count322
+\lst@lineno=\count323
+\lst@maxwidth=\dimen281
+
+(/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+\c@lstnumber=\count324
+\lst@skipnumbers=\count325
+\lst@framebox=\box80
+)
+(/usr/share/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2023/02/27 1.9 listings configuration
+))
+Package: listings 2023/02/27 1.9 (Carsten Heinz)
+
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcblistingscore.code.tex
+Library (tcolorbox): 'tcblistingscore.code.tex' version '6.0.1'
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
+Library (tcolorbox): 'tcbprocessing.code.tex' version '6.0.1'
+(/usr/share/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
+Package shellesc Info: Unrestricted shell escape enabled on input line 75.
+))
+\c@tcblisting=\count326
+))
+Package tcolorbox Info: Library `listingsutf8' is compatible with pdftex only. 
+Library `listings` is loaded instead. on input line 29.
+)
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbexternal.code.tex
+Library (tcolorbox): 'tcbexternal.code.tex' version '6.0.1'
+) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbmagazine.code.tex
+Library (tcolorbox): 'tcbmagazine.code.tex' version '6.0.1'
+) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbvignette.code.tex
+Library (tcolorbox): 'tcbvignette.code.tex' version '6.0.1'
+
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+fadings.code.tex
+File: tikzlibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
+File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
+Library (tcolorbox): 'tcbposter.code.tex' version '6.0.1'
+)) (/usr/share/texmf-dist/tex/latex/parskip/parskip.sty
+Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
 )
 Package thmtools Info: Key `name' (with value `Theorem')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmsty' on input line 22.
-\c@theorem=\count304
+(thmtools)             that uses `style=thmsty' on input line 44.
+\c@theorem=\count327
 Package thmtools Info: Key `name' (with value `Proposition')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=prosty' on input line 26.
+(thmtools)             that uses `style=prosty' on input line 48.
 Package thmtools Info: Key `name' (with value `Principle')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=prcpsty' on input line 30.
+(thmtools)             that uses `style=prcpsty' on input line 52.
 
 (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2023-01-16 L3 backend support: XeTeX
-\g__graphics_track_int=\count305
-\l__pdf_internal_box=\box71
-\g__pdf_backend_object_int=\count306
-\g__pdf_backend_annotation_int=\count307
-\g__pdf_backend_link_int=\count308
+\g__graphics_track_int=\count328
+\l__pdf_internal_box=\box81
+\g__pdf_backend_object_int=\count329
+\g__pdf_backend_annotation_int=\count330
+\g__pdf_backend_link_int=\count331
 )
 (target/AutomataCheatsheet.aux)
 \openout1 = `AutomataCheatsheet.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 46.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 4
-6.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 68.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 6
+8.
  (/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -721,18 +873,19 @@ LaTeX Font Info:    ... okay on input line 46.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 46.
+Package hyperref Info: Link coloring OFF on input line 68.
 (target/AutomataCheatsheet.out) (target/AutomataCheatsheet.out)
 \@outlinefile=\write4
 \openout4 = `AutomataCheatsheet.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 65.
+\c@lstlisting=\count332
+LaTeX Font Info:    Trying to load font information for U+msa on input line 87.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 65.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 87.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -744,269 +897,123 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write5
 \openout5 = `AutomataCheatsheet.toc'.
 
- [2]
+ [2] [3]
 Missing character: There is no  ("F064) in font cmr10!
+[4]
 Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[3]
 Missing character: There is no  ("F064) in font cmr10!
-Missing character: There is no  ("F0CE) in font cmr10!
-Missing character: There is no  ("F0CD) in font cmr10!
-Missing character: There is no  ("F064) in font cmr10!
-Missing character: There is no  ("F0B4) in font cmr10!
+[5]
+Missing character: There is no → ("2192) in font cmr10!
+Missing character: There is no ∈ ("2208) in font cmr10!
 Missing character: There is no  ("F022) in font cmr10!
 Missing character: There is no  ("F024) in font cmr10!
 Missing character: There is no  ("F022) in font cmr10!
 Missing character: There is no  ("F022) in font cmr10!
 Missing character: There is no  ("F024) in font cmr10!
 Missing character: There is no  ("F022) in font cmr10!
-[4]
+[6]
+Missing character: There is no  (U+F03A) in font [lmroman10-regular]:mapping=t
+ex-text;!
 Missing character: There is no  (U+F0B3) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no  (U+F0A3) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no  (U+F0B9) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no  (U+F022) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no  (U+F0B3) in font [lmroman10-regular]:mapping=t
 ex-text;!
-Missing character: There is no  (U+F0CE) in font [lmroman10-regular]:mapping=t
+Missing character: There is no  (U+F0A3) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F0B9) in font [lmroman10-regular]:mapping=t
+ex-text;!
+[7]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 382.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 382.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 382.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 382.
+
+Missing character: There is no  (U+F0B3) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no  (U+F0A3) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no  (U+F0B9) in font [lmroman10-regular]:mapping=t
 ex-text;!
-Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
+Missing character: There is no  (U+F022) in font [lmroman10-regular]:mapping=t
 ex-text;!
-Missing character: There is no  (U+F047) in font [lmroman10-regular]:mapping=t
+Missing character: There is no  (U+F0B3) in font [lmroman10-regular]:mapping=t
 ex-text;!
+Missing character: There is no  (U+F0A3) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  (U+F0B9) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no  ("F0C7) in font cmr10!
+Missing character: There is no  ("F0C6) in font cmr10!
+[8]
+File: img/regextofsm1.png Graphic file (type bmp)
+<img/regextofsm1.png>
+File: img/regextofsm2.png Graphic file (type bmp)
+<img/regextofsm2.png>
+ [9] [10]
+File: img/fsmtoregex1.png Graphic file (type bmp)
+<img/fsmtoregex1.png>
+File: img/fsmtoregex2.png Graphic file (type bmp)
+<img/fsmtoregex2.png>
+ [11]
+! Undefined control sequence.
+<recently read> \Sum 
+                     
+l.515 sixtuple (K, $\Sigma$, $\Sum
+                                  $, , s, A), where:
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 Missing character: There is no  (U+F044) in font [lmroman10-regular]:mapping=t
 ex-text;!
-Missing character: There is no  (U+F047) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0CE) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0CD) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F044) in font [lmroman10-regular]:mapping=t
-ex-text;!
-! Missing } inserted.
-<inserted text> 
-                }
-l.277 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+! Undefined control sequence.
+<recently read> \Sum 
+                     
+l.520 ^^I\item $\Sum
+                    $ is the stack alphabet,
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-Missing character: There is no  ("F0B4) in font cmr10!
-! Missing $ inserted.
-<inserted text> 
-                $
-l.277 \end{align}
-                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+[12] [13] (target/AutomataCheatsheet.aux)
 
-Missing character: There is no  (U+F0C8) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F047) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F047) in font [lmroman10-regular]:mapping=t
-ex-text;!
-! Missing { inserted.
-<inserted text> 
-                {
-l.277 \end{align}
-                 
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
+Package rerunfilecheck Warning: File `AutomataCheatsheet.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
-! Extra }, or forgotten $.
-<recently read> }
-                 
-l.277 \end{align}
-                 
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.277 \end{align}
-                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.277 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.277 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-Missing character: There is no  ("F0B4) in font cmr10!
-! Missing $ inserted.
-<inserted text> 
-                $
-l.277 \end{align}
-                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-Missing character: There is no  (U+F0C8) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F047) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F047) in font [lmroman10-regular]:mapping=t
-ex-text;!
-! Extra }, or forgotten $.
-<recently read> }
-                 
-l.277 \end{align}
-                 
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.277 \end{align}
-                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.277 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.277 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Misplaced \omit.
-\math@cr@@@ ...@ \@ne \add@amps \maxfields@ \omit 
-                                                  \kern -\alignsep@ \iftag@ ...
-l.277 \end{align}
-                 
-I expect to see \omit only after tab marks or the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-! Missing { inserted.
-<inserted text> 
-                {
-l.277 \end{align}
-                 
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-[5]
-Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0B4) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F047) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F067) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F067) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F067) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F067) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F067) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F067) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F067) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F065) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no → ("2192) in font cmr10!
-Missing character: There is no ∈ (U+2208) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ∈ (U+2208) in font [lmroman10-regular]:mapping=t
-ex-text;!
-[6] (target/AutomataCheatsheet.aux)
-Package rerunfilecheck Info: File `AutomataCheatsheet.out' has not changed.
-(rerunfilecheck)             Checksum: 1963F560058AB772F12CDC0FE24226FE;2356.
+Package rerunfilecheck Info: Checksums for `AutomataCheatsheet.out':
+(rerunfilecheck)             Before: 180CB2B36CBC08090F18E3E2F5A1B1F0;5735
+(rerunfilecheck)             After:  17D0D54741D01E61A0E53BA9E88342AC;5516.
  ) 
 Here is how much of TeX's memory you used:
- 21848 strings out of 478682
- 408693 string characters out of 5849664
- 1857018 words of memory out of 5000000
- 41571 multiletter control sequences out of 15000+600000
+ 28678 strings out of 478682
+ 579031 string characters out of 5849664
+ 1859018 words of memory out of 5000000
+ 48276 multiletter control sequences out of 15000+600000
  519079 words of font info for 70 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 83i,10n,80p,440b,396s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,10n,99p,511b,411s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on target/AutomataCheatsheet.pdf (6 pages).
+Output written on target/AutomataCheatsheet.pdf (13 pages).
