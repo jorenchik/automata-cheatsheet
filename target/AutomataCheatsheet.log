@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Arch Linux) (preloaded format=xelatex 2023.12.21)  30 DEC 2023 15:47
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Arch Linux) (preloaded format=xelatex 2023.12.21)  30 DEC 2023 15:53
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -912,54 +912,23 @@ Missing character: There is no  ("F022) in font cmr10!
 Missing character: There is no  ("F022) in font cmr10!
 Missing character: There is no  ("F024) in font cmr10!
 Missing character: There is no  ("F022) in font cmr10!
-[6]
-Missing character: There is no  (U+F03A) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0B3) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0A3) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0B9) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F022) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0B3) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0A3) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0B9) in font [lmroman10-regular]:mapping=t
-ex-text;!
-[7]
+[6] [7]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 382.
+(hyperref)                removing `math shift' on input line 373.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 382.
+(hyperref)                removing `superscript' on input line 373.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 382.
+(hyperref)                removing `superscript' on input line 373.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 382.
+(hyperref)                removing `math shift' on input line 373.
 
-Missing character: There is no  (U+F0B3) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0A3) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0B9) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F022) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0B3) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0A3) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no  (U+F0B9) in font [lmroman10-regular]:mapping=t
-ex-text;!
 Missing character: There is no  ("F0C7) in font cmr10!
 Missing character: There is no  ("F0C6) in font cmr10!
 [8]
@@ -967,16 +936,16 @@ File: img/regextofsm1.png Graphic file (type bmp)
 <img/regextofsm1.png>
 File: img/regextofsm2.png Graphic file (type bmp)
 <img/regextofsm2.png>
- [9] [10]
+ [9]
 File: img/fsmtoregex1.png Graphic file (type bmp)
 <img/fsmtoregex1.png>
 File: img/fsmtoregex2.png Graphic file (type bmp)
 <img/fsmtoregex2.png>
- [11]
+ [10] [11]
 ! Undefined control sequence.
 <recently read> \Sum 
                      
-l.515 sixtuple (K, $\Sigma$, $\Sum
+l.506 sixtuple (K, $\Sigma$, $\Sum
                                   $, , s, A), where:
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -989,7 +958,7 @@ ex-text;!
 ! Undefined control sequence.
 <recently read> \Sum 
                      
-l.520 ^^I\item $\Sum
+l.511 ^^I\item $\Sum
                     $ is the stack alphabet,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -998,22 +967,16 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 [12] [13] (target/AutomataCheatsheet.aux)
-
-Package rerunfilecheck Warning: File `AutomataCheatsheet.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `AutomataCheatsheet.out':
-(rerunfilecheck)             Before: 180CB2B36CBC08090F18E3E2F5A1B1F0;5735
-(rerunfilecheck)             After:  17D0D54741D01E61A0E53BA9E88342AC;5516.
+Package rerunfilecheck Info: File `AutomataCheatsheet.out' has not changed.
+(rerunfilecheck)             Checksum: 2ECE1CCD9C457C3D2E7AA0FA38110258;5516.
  ) 
 Here is how much of TeX's memory you used:
- 28678 strings out of 478682
- 579031 string characters out of 5849664
- 1859018 words of memory out of 5000000
- 48276 multiletter control sequences out of 15000+600000
+ 28677 strings out of 478682
+ 579015 string characters out of 5849664
+ 1860018 words of memory out of 5000000
+ 48275 multiletter control sequences out of 15000+600000
  519079 words of font info for 70 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 90i,10n,99p,511b,411s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,10n,99p,511b,403s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on target/AutomataCheatsheet.pdf (13 pages).
