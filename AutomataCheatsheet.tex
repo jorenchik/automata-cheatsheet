@@ -12,13 +12,10 @@
 \usepackage{framed}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[most]{tcolorbox}
-\usepackage{parskip} % This package adjusts paragraph spacing properly
+\usepackage{parskip}
 
-\setlength{\parindent}{0pt} % Removes the paragraph indent
-\setlength{\parskip}{1em} % Adds vertical space between paragraphs
-
-% The parskip package already sets the parskip to a non-zero value.
-
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em} 
 
 \tcbset{
     frame code={}
@@ -33,7 +30,7 @@
     enlarge left by=0mm,
     boxsep=5pt,
     arc=0pt,outer arc=0pt,
-    }
+}
 
 
 \colorlet{LightGray}{White!90!Periwinkle}
@@ -64,13 +61,8 @@
     footskip=30pt
 }
 
-% ------------------------------------------------------------------------------
 
 \begin{document}
-
-% ------------------------------------------------------------------------------
-% Cover Page and ToC
-% ------------------------------------------------------------------------------
 
 \title{ \normalsize \textsc{}
 		\\ [2.0cm]
@@ -80,54 +72,14 @@
 		}
 \date{}
 \author{\textbf{Author} \\ 
-		Automata guy (AKA. Graph enjoyer) \\
-		}
+		Automata guy (AKA. Graph enjoyer)\\
+}
 
 \maketitle
 \newpage
 
 \tableofcontents
 \newpage
-
-% ------------------------------------------------------------------------------
-
-% \section{Examples}
-%
-% \begin{theorem}
-%     This is a theorem.
-% \end{theorem}
-%
-% \begin{proposition}
-%     This is a proposition.
-% \end{proposition}
-%
-% \begin{principle}
-%     This is a principle.
-% \end{principle}
-%
-% \subsection{Pictures}
-%
-% \begin{figure}[htbp]
-%     \center
-%     \includegraphics[scale=0.06]{img/photo.jpg}
-%     \caption{Sydney, NSW}
-% \end{figure}
-%
-% \subsection{Citation}
-%
-% This is a citation\cite{Eg}.
-%
-% \newpage
-
-% ------------------------------------------------------------------------------
-% Reference and Cited Works
-% ------------------------------------------------------------------------------
-
-% \bibliographystyle{IEEEtran}
-% \bibliography{References.bib}
-
-% ------------------------------------------------------------------------------
-
 
 \section{Basic definitions}
 
