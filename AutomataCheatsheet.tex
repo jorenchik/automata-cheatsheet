@@ -632,13 +632,13 @@ six-tuple $(K, \Sigma, \Gamma, \Delta, s, A)$, where:
 \begin{itemize}
     \item $K$ is a finite set of states, 
     \item $\Sigma$ is the input alphabet, 
-    \item $\Sum$ is the stack alphabet, 
+    \item $\Gamma$ is the stack alphabet, 
     \item $s \in K$ is the start state, 
-    \item $A \subseteq K$ K is the set of accepting states, and 
+    \item $A \subseteq K$ is the set of accepting states, and 
     \item $\Delta$ is the transition relation.  It is a finite subset of  
         \begin{align*}
             \left(
-            \left( K \times (\Sigma \cup \{\epsilon\}) \times \Gamma  \right) \times \left( K \times \Gamma^*  \right)
+            \left( K \times \Sigma \times \Gamma \right) \times \left( K \times \Gamma^*  \right)
             \right)
         \end{align*}
 \end{itemize}
@@ -650,16 +650,14 @@ If a $c_1c_2\ldots c_n$ of characters is pushed onto the stack, they
 will be pushed rightmost first, so if the value of the stack before the push
 was $s$, the value after the push will be $c_1c_2\ldots c_ns$.
 
-Note two things about what a transition $((q_1, c_1, c_2), (q_2, \gamma))$
-says about how $M$ manipulates its stack:
+$M$ may only take the transition if the character $c_2$ matches the current top
+of the stack. If it does, and the transition is taken, then $M$ pops $c_2$ and
+then pushes $\gamma$. $M$ cannot “peek” at the top of its stack without popping
+off the values that it examines.
 
-\begin{itemize}
-  \item $M$ may only take the transition if the character $c_2$ matches the current top of the stack. If it does, and the transition is taken, then $M$ pops $c_2$ and then pushes $\gamma$. $M$ cannot “peek” at the top of its stack without popping off the values that it examines.
-  \item If $c_2 = \epsilon$, then $M$ must match $\epsilon$ against the top of the stack. But $\epsilon$ matches everywhere. So letting $\gamma$ be $\epsilon$ is equivalent to saying “without bothering to check the current value of the stack”. It is not equivalent to saying, “if the stack is empty.” In our definition, there is no way to say that directly, although we will see that we can create a way by letting $M$, before it does anything else, push a special marker onto the stack. Then, whenever that marker is on the top of the stack, the stack is otherwise empty.
-\end{itemize}
-
-$C$ is an accepting computation iff $C = (s, w, \alpha)|-_{M}^{*}(q, \epsilon, \beta)$, for some $q \in A$. 
-In our definition there are no restrictions on final stack contents. In other words, PDA accepts
-if it reaches the accepting configuration with no regard to the stack contents.
+$C$ is an accepting computation iff $C = (s, w, \alpha)|-_{M}^{*}(q, \epsilon,
+\beta)$, for some $q \in A$. In our definition there are no restrictions on
+final stack contents. In other words, PDA accepts if it reaches the accepting
+configuration with no regard to the stack contents.
 
 \end{document}
