@@ -133,7 +133,6 @@
 
 
 \subsection{String}
-
 A string is a finite sequence, possibly empty, of symbols drawn from some
 alphabet $\Sigma$. Given any alphabet $\Sigma$, the shortest string that can be formed from $\Sigma$
 is the empty string, which we will write as $\epsilon$. The set of all possible strings
@@ -141,7 +140,6 @@ over an alphabet $\Sigma$ is written $\Sigma$*. This notation exploits the Kleen
 operator, which we will define more generally below.
 
 \subsection{Language}
-
 A language is a (finite or infinite) set of strings over a finite alphabet $\Sigma$.
 When we are talking about more than one language, we will use the notation $\Sigma_L$
 to mean the alphabet from which the strings in the language L are formed.
@@ -217,23 +215,27 @@ where:
 
 
 \begin{itemize} 
-\item $K$ is a finite set of states,
-\item $\Sigma$ is the input alphabet, 
-\item $s \in K$ is the start state, 
-\item $A \subseteq K$ is the set of accepting states, and 
-\item $\sigma$ is the transition function. It maps from:
+    \item $K$ is a finite set of states,
+    \item $\Sigma$ is the input alphabet, 
+    \item $s \in K$ is the start state, 
+    \item $A \subseteq K$ is the set of accepting states, and 
+    \item $\sigma$ is the transition function. It maps from:
 
-		\begin{align*} K &\times \Sigma \to K \\ \end{align*}
+        \begin{align*} 
+            K &\times \Sigma \to K \\ 
+        \end{align*}
 
 \end{itemize}
 
 A configuration of a DFSM M is an element of $K \times \Sigma$*. Think of it as a snapshot
 of $M$. It captures the two things that can make a difference to $M$’s future
 behavior:
+
 \begin{itemize}
-		\item its current state 
-		\item the input that is still left to read.
+    \item its current state 
+    \item the input that is still left to read.
 \end{itemize}
+
 M halts whenever it enters either an accepting or a rejecting configuration. It
 will do so immediately after reading the last character of its input.
 
@@ -243,16 +245,16 @@ $M$.
 \subsection{Equivalence of states}
 
 \begin{enumerate}
-		\item Acceptor states $q$ and $q'$ are not equivalent if exactly one of
-		they have an accepting;
+    \item Acceptor states $q$ and $q'$ are not equivalent if exactly one of
+        they have an accepting;
 
-		\item Transformer states $q$ and $q'$ are not equivalent if any inputs
-		for letter x print different letters $y \ne y'$;
+    \item Transformer states $q$ and $q'$ are not equivalent if any inputs
+        for letter x print different letters $y \ne y'$;
 
-		\item The states $q$ and $q'$ of any automaton are not equivalent if any
-		for $x$ leads to nonequivalent states $f(q,x) \ne f(q',x)$;
+    \item The states $q$ and $q'$ of any automaton are not equivalent if any
+        for $x$ leads to nonequivalent states $f(q,x) \ne f(q',x)$;
 
-		\item Otherwise, states $q$ and $q'$ are equivalent: $q \ne q'$.
+    \item Otherwise, states $q$ and $q'$ are equivalent: $q \ne q'$.
 \end{enumerate}
 
 \subsection{Building DFA from NFA}
@@ -261,10 +263,10 @@ The algorithm will be shown with an example. We will need the $eps$ function.
 
 $eps(q: state)$ =
 \begin{enumerate}
-		\item $result = {q}$.
-		\item While there exists some $p \in result$ and some $r \in result$ and some transition $(p, \epsilon, r) \in \delta$ do:
-		Insert r into result.
-		\item Return $result$.
+    \item $result = {q}$.
+    \item While there exists some $p \in result$ and some $r \in result$ and some transition $(p, \epsilon, r) \in \delta$ do:
+        Insert r into result.
+    \item Return $result$.
 \end{enumerate}
 
 \subsubsection{Example: Computing $eps$}
@@ -275,12 +277,13 @@ Consider the following NDFSM $M$:
 
 To compute $eps(q_0)$, we initially set result to $\{q_0\}$. Then $q_1$ is added, producing $\{q_0, q_1\}$. Then $q_2$ is added, producing
 $\{q_0, q_1, q_2\}$. There is an $\epsilon$-transition from $q_2$ to $q_0$, but $q_0$ is already in result. So the computation of $e(q_0)$ halts.
+
 The result of running eps on each of the states of $M$ is:
 \begin{align*}
-		eps(q_0)&= \{q_0, q_1, q_2\}.\\
-		eps(q_1)&= \{q_0, q_1, q_2\}.\\
-		eps(q_2)&= \{q_0, q_1, q_2\}.\\
-		eps(q_3)&= \{q_3\}.\\
+    eps(q_0)&= \{q_0, q_1, q_2\}.\\
+    eps(q_1)&= \{q_0, q_1, q_2\}.\\
+    eps(q_2)&= \{q_0, q_1, q_2\}.\\
+    eps(q_3)&= \{q_3\}.\\
 \end{align*}
 
 \subsubsection{Example: Building DFA from NFA}
@@ -290,95 +293,93 @@ Consider the following NDFSM $M$:
 First, to get a feel for $M$, simulate it on the input string bbbacb, using coins
 to keep track of the states it enters.
 
-
-
 \includegraphics[width=\linewidth]{./img/ndfsmtodfsm1.png}
 
 We can apply \texttt{ndfsmtodfsm} to \( M \) as follows:
 \begin{enumerate}
-    \item Compute \( \varepsilon(q) \) for each state \( q \) in \( K_M \):
-    $ \varepsilon(q_1) = \{q_1, q_2, q_7\}, $
-    $ \varepsilon(q_2) = \{q_2, q_7\}, $
-    $ \varepsilon(q_3) = \{q_3\}, \varepsilon(q_4) = \{q_4\}, $
-    $ \varepsilon(q_5) = \{q_5\}, $
-    $ \varepsilon(q_6) = \{q_2, q_6, q_7\}, $
-    $ \varepsilon(q_7) = \{q_7\}, \varepsilon(q_8) = \{q_8\}. $
+    \item Compute \( \varepsilon(q) \) for each state $ q$ in $ K_M $:
+        $ \varepsilon(q_1) = \{q_1, q_2, q_7\}, $
+        $ \varepsilon(q_2) = \{q_2, q_7\}, $
+        $ \varepsilon(q_3) = \{q_3\}, \varepsilon(q_4) = \{q_4\}, $
+        $ \varepsilon(q_5) = \{q_5\}, $
+        $ \varepsilon(q_6) = \{q_2, q_6, q_7\}, $
+        $ \varepsilon(q_7) = \{q_7\}, \varepsilon(q_8) = \{q_8\}. $
 
     \item \( s' = \varepsilon(s) = \{q_1, q_2, q_7\} \).
 
     \item Compute \( \delta' \):
-    $ \text{active-states} = \{\{q_1, q_2, q_7\}\}. 
+        $ \text{active-states} = \{\{q_1, q_2, q_7\}\}. 
 
-		\text{ Consider } \{q_1, q_2, q_7\}: $
-    $ ((\{q_1, q_2, q_7\}, a), \emptyset). $
-    $ ((\{q_1, q_2, q_7\}, b), \{q_1, q_2, q_3, q_5, q_7, q_8\}). $
-    $ ((\{q_1, q_2, q_7\}, c), \emptyset). $
+        \text{ Consider } \{q_1, q_2, q_7\}: $
+        $ ((\{q_1, q_2, q_7\}, a), \emptyset). $
+        $ ((\{q_1, q_2, q_7\}, b), \{q_1, q_2, q_3, q_5, q_7, q_8\}). $
+        $ ((\{q_1, q_2, q_7\}, c), \emptyset). $
 
-    $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}\}. 
+        $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}\}. 
 
-				\text{ Consider } \emptyset: $
-    $ ((\emptyset, a), \emptyset). $
-    $ /* \emptyset \text{ is a dead state and we will generally omit it.} $
-    $ ((\emptyset, b), \emptyset). $
-    $ ((\emptyset, c), \emptyset). $
+        \text{ Consider } \emptyset: $
+        $ ((\emptyset, a), \emptyset). $
+        $ /* \emptyset \text{ is a dead state and we will generally omit it.} $
+        $ ((\emptyset, b), \emptyset). $
+        $ ((\emptyset, c), \emptyset). $
 
-    $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
-    $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}\}.$ 
+        $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
+        $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}\}.$ 
 
-		$\text{ Consider } \{q_2, q_4, q_6, q_7\}: $
-    $ ((\{q_2, q_4, q_6, q_7\}, a), \emptyset). $
-    $ ((\{q_2, q_4, q_6, q_7\}, b), \{q_3, q_5, q_8\}). $
-    $ ((\{q_2, q_4, q_6, q_7\}, c), \{q_2, q_7\}). $
+        $\text{ Consider } \{q_2, q_4, q_6, q_7\}: $
+        $ ((\{q_2, q_4, q_6, q_7\}, a), \emptyset). $
+        $ ((\{q_2, q_4, q_6, q_7\}, b), \{q_3, q_5, q_8\}). $
+        $ ((\{q_2, q_4, q_6, q_7\}, c), \{q_2, q_7\}). $
 
-    $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
-    $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}, \{q_3, q_5, q_8\}, $
-    $ \{q_2, q_7\}\}.$
+        $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
+        $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}, \{q_3, q_5, q_8\}, $
+        $ \{q_2, q_7\}\}.$
 
-				$ \text{ Consider } \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}: $
-    $ ((\{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, a), \{q_2, q_4, q_6, q_7\}). $
-    $ ((\{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, b), \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}). $
-    $ ((\{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, c), \{q_2, q_4, q_7\}). $
+        $ \text{ Consider } \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}: $
+        $ ((\{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, a), \{q_2, q_4, q_6, q_7\}). $
+        $ ((\{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, b), \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}). $
+        $ ((\{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, c), \{q_2, q_4, q_7\}). $
 
-    $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
-    $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}, \{q_3, q_5, q_8\}, $
-    $ \{q_2, q_7\}, \{q_2, q_4, q_7\}\}.$
+        $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
+        $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}, \{q_3, q_5, q_8\}, $
+        $ \{q_2, q_7\}, \{q_2, q_4, q_7\}\}.$
 
-				$ \text{ Consider } \{q_4\}: $
-    $ ((\{q_4\}, a), \emptyset). $
-    $ ((\{q_4\}, b), \emptyset). $
-    $ ((\{q_4\}, c), \{q_2, q_7\}). $
+        $ \text{ Consider } \{q_4\}: $
+        $ ((\{q_4\}, a), \emptyset). $
+        $ ((\{q_4\}, b), \emptyset). $
+        $ ((\{q_4\}, c), \{q_2, q_7\}). $
 
-				\text{active-states did not change.} 
+        \text{active-states did not change.} 
 
-				\text{Consider} $ \{q_3, q_5, q_8\}:$
-    $ ((\{q_3, q_5, q_8\}, a), \{q_2, q_4, q_6, q_7\}). $
-    $ ((\{q_3, q_5, q_8\}, b), \{q_2, q_6, q_7\}). $
-    $ ((\{q_3, q_5, q_8\}, c), \{q_4\}). $
+        \text{Consider} $ \{q_3, q_5, q_8\}:$
+        $ ((\{q_3, q_5, q_8\}, a), \{q_2, q_4, q_6, q_7\}). $
+        $ ((\{q_3, q_5, q_8\}, b), \{q_2, q_6, q_7\}). $
+        $ ((\{q_3, q_5, q_8\}, c), \{q_4\}). $
 
-    $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
-    $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}, \{q_3, q_5, q_8\}, $
-    $ \{q_2, q_7\}, \{q_2, q_4, q_7\}, \{q_2, q_6, q_7\}\}.$ 
+        $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
+        $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}, \{q_3, q_5, q_8\}, $
+        $ \{q_2, q_7\}, \{q_2, q_4, q_7\}, \{q_2, q_6, q_7\}\}.$ 
 
-		\text{ Consider } \{q_2, q_7\}: $
-    $ ((\{q_2, q_7\}, a), \emptyset). $
-    $ ((\{q_2, q_7\}, b), \{q_3, q_5, q_8\}). $
-    $ ((\{q_2, q_7\}, c), \emptyset). $
+        \text{ Consider } $ \{q_2, q_7\}: $
+        $ ((\{q_2, q_7\}, a), \emptyset). $
+        $ ((\{q_2, q_7\}, b), \{q_3, q_5, q_8\}). $
+        $ ((\{q_2, q_7\}, c), \emptyset). $
 
-		\text{active-states did not change.} 
+        \text{active-states did not change.} 
 
-				\text{ Consider } \{q_2, q_4, q_7\}:
-    $ ((\{q_2, q_4, q_7\}, a), \emptyset). $
-    $ ((\{q_2, q_4, q_7\}, b), \{q_3, q_5, q_8\}). $
-    $ ((\{q_2, q_4, q_7\}, c), \{q_2, q_7\}). $
+        \text{ Consider } $\{q_2, q_4, q_7\}:$
+        $ ((\{q_2, q_4, q_7\}, a), \emptyset). $
+        $ ((\{q_2, q_4, q_7\}, b), \{q_3, q_5, q_8\}). $
+        $ ((\{q_2, q_4, q_7\}, c), \{q_2, q_7\}). $
 
-    \text{active-states did not change. }
+        \text{active-states did not change. }
 
-    \text{Consider } \{q_2, q_6, q_7\}:
-    $ ((\{q_2, q_6, q_7\}, a), \emptyset). $
-    $ ((\{q_2, q_6, q_7\}, b), \{q_3, q_5, q_8\}). $
-    $ ((\{q_2, q_6, q_7\}, c), \{q_2, q_7\}). $
+        \text{Consider } $\{q_2, q_6, q_7\}:$
+        $ ((\{q_2, q_6, q_7\}, a), \emptyset). $
+        $ ((\{q_2, q_6, q_7\}, b), \{q_3, q_5, q_8\}). $
+        $ ((\{q_2, q_6, q_7\}, c), \{q_2, q_7\}). $
 
-    \text{active-states did not change. } \delta' \text{ has been computed for each element of active-states.}
+        \text{active-states did not change. } $\delta'$ \text{ has been computed for each element of active-states.}
 \end{enumerate}
 
 \subsection{Transducer (Transformator)}
@@ -390,13 +391,13 @@ outputs with transitions are called Mealy machines, after their inventor George
 Mealy.  A Mealy machine $M$ is a six-tuple $(K, \Sigma, O, \delta, s, A)$, where: 
 
 \begin{itemize}
-	\item $K$ is a finite set of states,
-	\item $\Sigma$ is an input alphabet,
-	\item $O$ is an output alphabet,
-	\item $s \in K$ is the start state,
-	\item $A \subseteq K $ is the set of accepting states (although for some applications this designation is not important),
-	\item $\sigma$ is the transition function. It is function $(K \times \Sigma) \to (K)$, and
-	\item $D$ is the display or output function. It is a function from $(K) \to (O^*)$.
+    \item $K$ is a finite set of states,
+    \item $\Sigma$ is an input alphabet,
+    \item $O$ is an output alphabet,
+    \item $s \in K$ is the start state,
+    \item $A \subseteq K $ is the set of accepting states (although for some applications this designation is not important),
+    \item $\sigma$ is the transition function. It is function $(K \times \Sigma) \to (K)$, and
+    \item $D$ is the display or output function. It is a function from $(K) \to (O^*)$.
 \end{itemize}
 
 A Mealy (transducer defined above) machine $M$ computes a function $f(w)$ $
@@ -442,38 +443,35 @@ compute the probability of reaching an accepting state after processing the
 word. The process involves two key steps:
 
 \begin{enumerate}
-  \item   For each word in the input alphabet, calculate the probability of transitioning from one state to another. This is done by summing up the probabilities of all possible paths that lead to an accepting state after processing the word. The transition function $p$ gives the probability of transitioning from one state to another given an input symbol.
-
-  \item   Compare the calculated probability with the acceptance threshold $\lambda$. If the cumulative probability of reaching an accepting state is greater than or equal to $\lambda$, the word is accepted; otherwise, it is rejected.
-
+    \item For each word in the input alphabet, calculate the probability of transitioning from one state to another. This is done by summing up the probabilities of all possible paths that lead to an accepting state after processing the word. The transition function $p$ gives the probability of transitioning from one state to another given an input symbol.
+    \item Compare the calculated probability with the acceptance threshold $\lambda$. If the cumulative probability of reaching an accepting state is greater than or equal to $\lambda$, the word is accepted; otherwise, it is rejected.
 \end{enumerate}
 
 \subsubsection{Using Matrix Multiplication for Each Input}
-Matrix multiplication can be used to efficiently compute the probabilities of transitioning between states for a given input string. Consider the transition matrix $P(x)$ for an input symbol $x \in X$, where each entry $P(x)_{ij}$ represents the probability of transitioning from state $i$ to state $j$ given the input $x$. The process is as follows:
+Matrix multiplication can be used to efficiently compute the probabilities of
+transitioning between states for a given input string. Consider the transition
+matrix $P(x)$ for an input symbol $x \in X$, where each entry $P(x)_{ij}$
+represents the probability of transitioning from state $i$ to state $j$ given
+the input $x$. The process is as follows:
 
 \begin{enumerate}
-  \item  Start with a row vector $\mathbf{v}$ representing the initial state distribution. If the initial state is certain, $\mathbf{v}$ is a one-hot vector with a 1 at the position corresponding to the initial state $q_0$.
-
-  \item  For each symbol $x$ in the input string, multiply the current state vector $\mathbf{v}$ by the transition matrix $P(x)$. This results in a new state vector representing the probability distribution over states after processing $x$.
-
-  \begin{align*}
-		  \mathbf{v}' &= \mathbf{v} \cdot P(x)
-  \end{align*}
-
-  \item  After processing the entire input string, the final state vector $\mathbf{v}'$ gives the probability distribution over all states. The probability of being in an accepting state is the sum of the probabilities in $\mathbf{v}'$ corresponding to the accepting states.
-
+    \item Start with a row vector $\mathbf{v}$ representing the initial state distribution. If the initial state is certain, $\mathbf{v}$ is a one-hot vector with a 1 at the position corresponding to the initial state $q_0$.
+    \item For each symbol $x$ in the input string, multiply the current state vector $\mathbf{v}$ by the transition matrix $P(x)$. This results in a new state vector representing the probability distribution over states after processing $x$.
+        \begin{align*}
+            \mathbf{v}' &= \mathbf{v} \cdot P(x)
+        \end{align*}
+    \item After processing the entire input string, the final state vector $\mathbf{v}'$ gives the probability distribution over all states. The probability of being in an accepting state is the sum of the probabilities in $\mathbf{v}'$ corresponding to the accepting states.
 \end{enumerate}
-
 
 \subsection{Pumping lemma for Regular Languages }
 
 \textbf{Theorem:} If $L$ is a regular language, then: 
 
 \begin{align*}
-		\exists k \ge 1 ( \forall \>\text{strings} \> w \in L, where |w| \ge k (x, y, z (w = &xyz, \\
-		 |xy| &\le k, \\
-		 y &\ne \epsilon, \text{and} \\
-		\forallq &\ge 0 (xy^{q}z \in L)))). \\
+    \exists k \ge 1 ( \forall \>\text{strings} \> w \in L, where |w| \ge k (x, y, z (w = &xyz, \\
+    |xy| &\le k, \\
+    y &\ne \epsilon, \text{and} \\
+    \forallq &\ge 0 (xy^{q}z \in L)))). \\
 \end{align*}
  
 The Pumping Theorem tells us something that is true of every regular language.
@@ -549,14 +547,14 @@ a regular language. It is constructed from members of $\Sigma$ using union
 
 A regular expression is a string that can be formed according to the following rules:
 \begin{enumerate}
-	\item $\emptyset$ is a regular expression.
-	\item $\epsilon$ is a regular expression.
-	\item Every element in $\Sigma$ is a regular expression.
-	\item Given two regular expressions $\alpha$ and $\beta$, $\alpha\beta$ is a regular expression.
-	\item Given two regular expressions $\alpha$ and $\beta$, $\alpha \lor \beta$ is a regular expression.
-	\item Given a regular expression $\alpha$, $\alpha^*$ is a regular expression.
-	\item Given a regular expression $\alpha$, $\alpha^+$ is a regular expression.
-	\item Given a regular expression $\alpha$, ($\alpha$) is a regular expression.
+    \item $\emptyset$ is a regular expression.
+    \item $\epsilon$ is a regular expression.
+    \item Every element in $\Sigma$ is a regular expression.
+    \item Given two regular expressions $\alpha$ and $\beta$, $\alpha\beta$ is a regular expression.
+    \item Given two regular expressions $\alpha$ and $\beta$, $\alpha \lor \beta$ is a regular expression.
+    \item Given a regular expression $\alpha$, $\alpha^*$ is a regular expression.
+    \item Given a regular expression $\alpha$, $\alpha^+$ is a regular expression.
+    \item Given a regular expression $\alpha$, ($\alpha$) is a regular expression.
 \end{enumerate}
 
 Define the following semantic interpretation function \( L \) for the language of regular expressions:
@@ -574,42 +572,40 @@ Define the following semantic interpretation function \( L \) for the language o
 
 
 \begin{itemize}
-		\item * asterisk indicates zero or more occurrences of the preceding element.
-		For example, ab*c matches "ac", "abc", "abbc", "abbbc", and so on. 
-
-		\item + the plus sign indicates one or more occurrences of the preceding element.
-		For example, ab+c matches "abc", "abbc", "abbbc", and so on, but not "ac". 
+    \item * asterisk indicates zero or more occurrences of the preceding element.
+        For example, ab*c matches "ac", "abc", "abbc", "abbbc", and so on. 
+    \item + the plus sign indicates one or more occurrences of the preceding element.
+        For example, ab+c matches "abc", "abbc", "abbbc", and so on, but not "ac". 
 \end{itemize}
 
 
 \subsection{Building Regex from FSM}
 
-
 \begin{itemize}
 
-\item If $\alpha$ is the regular expression $\beta \cup \gamma$ and if both $L(\beta)$ and $L(\gamma)$ are regular,
-then we construct $M_3 = (K_3, \Sigma, \Delta_3, s_3, A_3)$ such that $L(M_3) = L(\alpha) = L(\beta) \cup L(\gamma)$. If necessary, rename the states of $M_1$ and $M_2$ so that $K_1  K_2 = $. Create
-a new start state, $s_3$, and connect it to the start states of $M_1$ and $M_2$ via
-$\epsilon$-transitions. $M_3$ accepts if either $M_1$ or $M_2$ accepts. So $M_3 = ({s_3} \cup K_1 \cup K_2, \Sigma, \Delta_3, s_3, A_1 \cup A_2)$, where $\Delta3 = \Delta1 \cup \Delta2 \cup {((s_3, \epsilon), s_1), ((s_3, \epsilon), s_2)}$.
+    \item If $\alpha$ is the regular expression $\beta \cup \gamma$ and if both $L(\beta)$ and $L(\gamma)$ are regular,
+        then we construct $M_3 = (K_3, \Sigma, \Delta_3, s_3, A_3)$ such that $L(M_3) = L(\alpha) = L(\beta) \cup L(\gamma)$. If necessary, rename the states of $M_1$ and $M_2$ so that $K_1  K_2 = $. Create
+        a new start state, $s_3$, and connect it to the start states of $M_1$ and $M_2$ via
+        $\epsilon$-transitions. $M_3$ accepts if either $M_1$ or $M_2$ accepts. So $M_3 = ({s_3} \cup K_1 \cup K_2, \Sigma, \Delta_3, s_3, A_1 \cup A_2)$, where $\Delta3 = \Delta1 \cup \Delta2 \cup {((s_3, \epsilon), s_1), ((s_3, \epsilon), s_2)}$.
 
-\item If $\alpha$ is the regular expression $\beta\gamma$ and if both $L(\beta)$ and $L(\gamma)$ are regular, then
-we construct $M_3 = (K_3, \Sigma, \Delta_3, s_3, A_3)$ such that $L(M_3) = L(\alpha) = L(\beta) L(\gamma)$. If
-necessary, rename the states of $M_1$ and $M_2$ so that $K_1 \cap K_2 = \emptyset$. We will build $M_3$
-by connecting every accepting state of $M_1$ to the start state of $M_2$ via an
-$\epsilon$-transition. $M_3$ will start in the start state of $M_1$ and will accept if $M_2$
-does. So $M_3 = (K_1 \cup K_2, \Sigma, \Delta_3, s_1, A_2)$, where $\Delta_3 = \Delta_1 \cup \Delta_2 \cup \{((q, \epsilon), s_2) : q
-\in A_1\}$.
+    \item If $\alpha$ is the regular expression $\beta\gamma$ and if both $L(\beta)$ and $L(\gamma)$ are regular, then
+        we construct $M_3 = (K_3, \Sigma, \Delta_3, s_3, A_3)$ such that $L(M_3) = L(\alpha) = L(\beta) L(\gamma)$. If
+        necessary, rename the states of $M_1$ and $M_2$ so that $K_1 \cap K_2 = \emptyset$. We will build $M_3$
+        by connecting every accepting state of $M_1$ to the start state of $M_2$ via an
+        $\epsilon$-transition. $M_3$ will start in the start state of $M_1$ and will accept if $M_2$
+        does. So $M_3 = (K_1 \cup K_2, \Sigma, \Delta_3, s_1, A_2)$, where $\Delta_3 = \Delta_1 \cup \Delta_2 \cup \{((q, \epsilon), s_2) : q
+        \in A_1\}$.
 
-\item If $\alpha$ is the regular expression $\beta^*$ and if $L(\beta)$ is regular, then we construct
-$M_2 = (K_2, \Sigma, \Delta_2, s_2, A_2)$ such that $L(M_2) = L(\alpha) = L(\beta)^*$. We will create a new
-start state $s_2$ and make it accepting, thus assuring that $M_2$ accepts $\epsilon$. (We need
-a new start state because it is possible that $s_1$, the start state of $M_1$, is not
-an accepting state. If it isn't and if it is reachable via any input string
-other than $\epsilon$, then simply making it an accepting state would cause $M_2$ to accept
-strings that are not in $(L(M_1))^*$.) We link the new $s_2$ to $s_1$ via an
-$\epsilon$-transition. Finally, we create $\epsilon$-transitions from each of $M_1$’s accepting
-states back to $s_1$. So $M_2 = (\{s_2\} \cup K_1, \Sigma, \Delta_2, s_2, \{s_2\} \cup A_1)$, where $\Delta_2 = \Delta_1 \cup
-\{((s_2, \epsilon), s_1)\} \cup \{((q, \epsilon), s_1) : q \in A_1\}$. 
+    \item If $\alpha$ is the regular expression $\beta^*$ and if $L(\beta)$ is regular, then we construct
+        $M_2 = (K_2, \Sigma, \Delta_2, s_2, A_2)$ such that $L(M_2) = L(\alpha) = L(\beta)^*$. We will create a new
+        start state $s_2$ and make it accepting, thus assuring that $M_2$ accepts $\epsilon$. (We need
+        a new start state because it is possible that $s_1$, the start state of $M_1$, is not
+        an accepting state. If it isn't and if it is reachable via any input string
+        other than $\epsilon$, then simply making it an accepting state would cause $M_2$ to accept
+        strings that are not in $(L(M_1))^*$.) We link the new $s_2$ to $s_1$ via an
+        $\epsilon$-transition. Finally, we create $\epsilon$-transitions from each of $M_1$’s accepting
+        states back to $s_1$. So $M_2 = (\{s_2\} \cup K_1, \Sigma, \Delta_2, s_2, \{s_2\} \cup A_1)$, where $\Delta_2 = \Delta_1 \cup
+        \{((s_2, \epsilon), s_1)\} \cup \{((q, \epsilon), s_1) : q \in A_1\}$. 
 
 \end{itemize}
 
@@ -634,33 +630,31 @@ accepted by some FSM $M_1 = (K_1, \Sigma, \Delta_1, s_1, A_1)$. If $L(\gamma)$
 is regular, then it is accepted by some $FSM M_2 = (K_2, \Sigma, \Delta_2, s_2,
 A_2)$.
 
-fsmtoregexheuristic(M: FSM) =
+$fsmtoregexheuristic(M: FSM) =$
 \begin{enumerate}
-  \item Remove from $M$ any states that are unreachable from the start state.
+    \item Remove from $M$ any states that are unreachable from the start state.
 
-  \item If $M$ has no accepting states then halt and return the simple
-  regular expression $\emptyset$.
-  
-  \item If the start state of $M$ is part of a loop (i.e., it has any
-  transitions coming into it), create a new start state $s$
-  and connect $s$ to $M$’s start state via an
-  $\epsilon$-transition. This new start state $s$ will have
-  no transitions into it.
-  
-  \item If there is more than one accepting state of $M$ or if there is
-		  just one but there are any transitions out of it,
-		  create a new accepting state and connect each
-		  of $M$’s accepting states to it via an
-		  $\epsilon$-transition. Remove the old accepting states
-		  from the set of accepting states. Note that the
-		  new accepting state will have no transitions
-		  out from it.
+    \item If $M$ has no accepting states then halt and return the simple
+        regular expression $\emptyset$.
+
+    \item If the start state of $M$ is part of a loop (i.e., it has any
+        transitions coming into it), create a new start state $s$
+        and connect $s$ to $M$’s start state via an
+        $\epsilon$-transition. This new start state $s$ will have
+        no transitions into it.
+
+    \item If there is more than one accepting state of $M$ or if there is
+        just one but there are any transitions out of it,
+        create a new accepting state and connect each
+        of $M$’s accepting states to it via an
+        $\epsilon$-transition. Remove the old accepting states
+        from the set of accepting states. Note that the
+        new accepting state will have no transitions
+        out from it.
 \end{enumerate}
 
 \subsubsection{Example: Building Regex from FSM}
 
-
-%     \includegraphics[scale=0.06]{img/photo.jpg}
 \includegraphics[width=\textwidth]{img/fsmtoregex1.png}
 \includegraphics[width=\textwidth]{img/fsmtoregex2.png}
 
@@ -684,17 +678,17 @@ We will use the following definition: A pushdown automaton (or PDA) $M$ is a
 six-tuple $(K, \Sigma, \Gamma, \Delta, s, A)$, where:
  
 \begin{itemize}
-	\item $K$ is a finite set of states, 
-	\item $\Sigma$ is the input alphabet, 
-	\item $\Sum$ is the stack alphabet, 
-	\item $s \in K$ is the start state, 
-	\item $A \subseteq K$ K is the set of accepting states, and 
-	\item $\Delta$ is the transition relation.  It is a finite subset of  
-\begin{align*}
-\left(
-		\left( K \times (\Sigma \cup \{\epsilon\}) \times \Gamma  \right) \times \left( K \times \Gamma^*  \right)
-\right)
-\end{align*}
+    \item $K$ is a finite set of states, 
+    \item $\Sigma$ is the input alphabet, 
+    \item $\Sum$ is the stack alphabet, 
+    \item $s \in K$ is the start state, 
+    \item $A \subseteq K$ K is the set of accepting states, and 
+    \item $\Delta$ is the transition relation.  It is a finite subset of  
+        \begin{align*}
+            \left(
+            \left( K \times (\Sigma \cup \{\epsilon\}) \times \Gamma  \right) \times \left( K \times \Gamma^*  \right)
+            \right)
+        \end{align*}
 \end{itemize}
 
 We will use the following notational convention for describing $M$’s stack as a
