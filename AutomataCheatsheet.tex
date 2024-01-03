@@ -79,9 +79,8 @@
 		}
 \date{}
 \author{\textbf{Author} \\ 
-		Automata guy \\
-		Riga \\
-		2024}
+		Automata guy (AKA. Graph enjoyer) \\
+		}
 
 \maketitle
 \newpage
@@ -129,9 +128,8 @@
 % ------------------------------------------------------------------------------
 
 
-\section{Basics}
+\section{Basic definitions}
 
-Overview of basic definitions.
 
 \subsection{String}
 
@@ -220,8 +218,7 @@ where:
 \begin{itemize} 
 \item $K$ is a finite set of states,
 \item $\Sigma$ is the input alphabet, 
-\item $s \in K$ is the
-start state, 
+\item $s \in K$ is the start state, 
 \item $A \subseteq K$ is the set of accepting states, and 
 \item $\sigma$ is the transition function. It maps from:
 
@@ -229,17 +226,18 @@ start state,
 
 \end{itemize}
 
-A configuration of a DFSM M is an element of K  $\Sigma$*. Think of it as a snapshot
-of M. It captures the two things that can make a difference to M’s future
+A configuration of a DFSM M is an element of $K \times \Sigma$*. Think of it as a snapshot
+of $M$. It captures the two things that can make a difference to $M$’s future
 behavior:
-
-• its current state • the input that is still left to read.
-
+\begin{itemize}
+		\item its current state 
+		\item the input that is still left to read.
+\end{itemize}
 M halts whenever it enters either an accepting or a rejecting configuration. It
 will do so immediately after reading the last character of its input.
 
-The language accepted by M, denoted L(M), is the set of all strings accepted by
-M.
+The language accepted by $M$, denoted $L(M)$, is the set of all strings accepted by
+$M$.
 
 \subsection{Equivalence of states}
 
@@ -256,13 +254,121 @@ M.
 		\item Otherwise, states $q$ and $q'$ are equivalent: $q \ne q'$.
 \end{enumerate}
 
+\subsection{Building DFA from NFA}
+
+The algorithm will be shown with an example. We will need the $eps$ function.
+
+$eps(q: state)$ =
+\begin{enumerate}
+		\item $result = {q}$.
+		\item While there exists some $p \in result$ and some $r \in result$ and some transition $(p, \epsilon, r) \in \delta$ do:
+		Insert r into result.
+		\item Return $result$.
+\end{enumerate}
+
+\subsubsection{Example: Computing $eps$}
+
+Consider the following NDFSM $M$:
+
+\includegraphics[width=\linewidth]{./img/eps.png}
+
+To compute $eps(q_0)$, we initially set result to $\{q_0\}$. Then $q_1$ is added, producing $\{q_0, q_1\}$. Then $q_2$ is added, producing
+$\{q_0, q_1, q_2\}$. There is an $\epsilon$-transition from $q_2$ to $q_0$, but $q_0$ is already in result. So the computation of $e(q_0)$ halts.
+The result of running eps on each of the states of $M$ is:
+\begin{align*}
+		eps(q_0)&= \{q_0, q_1, q_2\}.\\
+		eps(q_1)&= \{q_0, q_1, q_2\}.\\
+		eps(q_2)&= \{q_0, q_1, q_2\}.\\
+		eps(q_3)&= \{q_3\}.\\
+\end{align*}
+
+\subsubsection{Example: Building DFA from NFA}
+
+Consider the following NDFSM $M$:
+
+First, to get a feel for $M$, simulate it on the input string bbbacb, using coins
+to keep track of the states it enters.
+
+
+
+\includegraphics[width=\linewidth]{./img/ndfsmtodfsm1.png}
+
+We can apply \texttt{ndfsmtodfsm} to \( M \) as follows:
+\begin{enumerate}
+    \item Compute \( \varepsilon(q) \) for each state \( q \) in \( K_M \):
+    $ \varepsilon(q_1) = \{q_1, q_2, q_7\}, $
+    $ \varepsilon(q_2) = \{q_2, q_7\}, $
+    $ \varepsilon(q_3) = \{q_3\}, \varepsilon(q_4) = \{q_4\}, $
+    $ \varepsilon(q_5) = \{q_5\}, $
+    $ \varepsilon(q_6) = \{q_2, q_6, q_7\}, $
+    $ \varepsilon(q_7) = \{q_7\}, \varepsilon(q_8) = \{q_8\}. $
+
+    \item \( s' = \varepsilon(s) = \{q_1, q_2, q_7\} \).
+
+    \item Compute \( \delta' \):
+    $ \text{active-states} = \{\{q_1, q_2, q_7\}\}. \text{ Consider } \{q_1, q_2, q_7\}: $
+    $ ((\{q_1, q_2, q_7\}, a), \emptyset). $
+    $ ((\{q_1, q_2, q_7\}, b), \{q_1, q_2, q_3, q_5, q_7, q_8\}). $
+    $ ((\{q_1, q_2, q_7\}, c), \emptyset). $
+
+    $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}\}. \text{ Consider } \emptyset: $
+    $ ((\emptyset, a), \emptyset). $
+    $ /* \emptyset \text{ is a dead state and we will generally omit it.} $
+    $ ((\emptyset, b), \emptyset). $
+    $ ((\emptyset, c), \emptyset). $
+
+    $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
+    $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}\}. \text{ Consider } \{q_2, q_4, q_6, q_7\}: $
+    $ ((\{q_2, q_4, q_6, q_7\}, a), \emptyset). $
+    $ ((\{q_2, q_4, q_6, q_7\}, b), \{q_3, q_5, q_8\}). $
+    $ ((\{q_2, q_4, q_6, q_7\}, c), \{q_2, q_7\}). $
+
+    $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
+    $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}, \{q_3, q_5, q_8\}, $
+    $ \{q_2, q_7\}\}. \text{ Consider } \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}: $
+    $ ((\{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, a), \{q_2, q_4, q_6, q_7\}). $
+    $ ((\{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, b), \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}). $
+    $ ((\{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, c), \{q_2, q_4, q_7\}). $
+
+    $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
+    $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}, \{q_3, q_5, q_8\}, $
+    $ \{q_2, q_7\}, \{q_2, q_4, q_7\}\}. \text{ Consider } \{q_4\}: $
+    $ ((\{q_4\}, a), \emptyset). $
+    $ ((\{q_4\}, b), \emptyset). $
+    $ ((\{q_4\}, c), \{q_2, q_7\}). $
+
+    \text{active-states did not change. Consider } \{q_3, q_5, q_8\}:
+    $ ((\{q_3, q_5, q_8\}, a), \{q_2, q_4, q_6, q_7\}). $
+    $ ((\{q_3, q_5, q_8\}, b), \{q_2, q_6, q_7\}). $
+    $ ((\{q_3, q_5, q_8\}, c), \{q_4\}). $
+
+    $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
+    $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}, \{q_3, q_5, q_8\}, $
+    $ \{q_2, q_7\}, \{q_2, q_4, q_7\}, \{q_2, q_6, q_7\}\}. \text{ Consider } \{q_2, q_7\}: $
+    $ ((\{q_2, q_7\}, a), \emptyset). $
+    $ ((\{q_2, q_7\}, b), \{q_3, q_5, q_8\}). $
+    $ ((\{q_2, q_7\}, c), \emptyset). $
+
+    \text{active-states did not change. Consider } \{q_2, q_4, q_7\}:
+    $ ((\{q_2, q_4, q_7\}, a), \emptyset). $
+    $ ((\{q_2, q_4, q_7\}, b), \{q_3, q_5, q_8\}). $
+    $ ((\{q_2, q_4, q_7\}, c), \{q_2, q_7\}). $
+
+    \text{active-states did not change. Consider } \{q_2, q_6, q_7\}:
+    $ ((\{q_2, q_6, q_7\}, a), \emptyset). $
+    $ ((\{q_2, q_6, q_7\}, b), \{q_3, q_5, q_8\}). $
+    $ ((\{q_2, q_6, q_7\}, c), \{q_2, q_7\}). $
+
+    \text{active-states did not change. } \delta' \text{ has been computed for each element of active-states.}
+\end{enumerate}
+
 \subsection{Transducer (Transformator)}
 
 This definition for a deterministic finite state transducer permits each
 machine to output any finite sequence of symbols as it makes each transition
 (in other words, as it reads each symbol of its input).  FSMs that associate
 outputs with transitions are called Mealy machines, after their inventor George
-Mealy.  A Mealy machine M is a six-tuple $(K, \Sigma, O, , s, A)$, where: 
+Mealy.  A Mealy machine $M$ is a six-tuple $(K, \Sigma, O, \delta, s, A)$, where: 
 
 \begin{itemize}
 	\item $K$ is a finite set of states,
@@ -277,10 +383,7 @@ Mealy.  A Mealy machine M is a six-tuple $(K, \Sigma, O, , s, A)$, where:
 A Mealy (transducer defined above) machine $M$ computes a function $f(w)$ $
 iff$, when it reads the input string $w$, its output sequence is $f(w)$. 
 
-\subsubsection{Not on determinism}
-
-
-\subsection{Note on Determinism of Transducers}
+\subsubsection{Note on determinism}
 
 Transducers are a class of automata used to model systems that transform input
 sequences into output sequences. Moore and Mealy machines are two types of
@@ -302,15 +405,46 @@ The concept of nondeterminism can be extended to transducers; however, this is n
 
 \subsection{Probabalistic automata}
 
+Probabalistic automata is defined by 6-tuple $(Q,X,p,q_A, q_0, \lambda)$:
+
 \begin{itemize}
 	\item $Q$ – set of states
 	\item $X$ – input alphabet
 	\item $p$ – transition function: $Q \times X \times Q → [0;1]$ or $X \to {[0;1]}^{|Q|\times|Q|}$
-	\item $q_0 \in Q$
-	\item $Q_A \subseteq Q$
+	\item $Q_A \subseteq Q$ – accepting states
 	\item $q_0$ – initial state (sometimes $q0 \in [0;1]^{|Q|}$)
-	\item $q_A$ – accepting states (sometimes $Q_A ∈ [0;1]^{|Q|}$) \item $\lambda \in [0;1]$ – acceptance threshold (sometimes there is no $\lambda$) 
+	\item $\lambda \in [0;1]$ – acceptance threshold (sometimes there is no $\lambda$) 
 \end{itemize}
+
+\subsubsection{Finding Accepting Words in Probabilistic Automata}
+
+To determine whether a word is accepted by a probabilistic automaton, we
+compute the probability of reaching an accepting state after processing the
+word. The process involves two key steps:
+
+\begin{enumerate}
+  \item   For each word in the input alphabet, calculate the probability of transitioning from one state to another. This is done by summing up the probabilities of all possible paths that lead to an accepting state after processing the word. The transition function $p$ gives the probability of transitioning from one state to another given an input symbol.
+
+  \item   Compare the calculated probability with the acceptance threshold $\lambda$. If the cumulative probability of reaching an accepting state is greater than or equal to $\lambda$, the word is accepted; otherwise, it is rejected.
+
+\end{enumerate}
+
+\subsubsection{Using Matrix Multiplication for Each Input}
+Matrix multiplication can be used to efficiently compute the probabilities of transitioning between states for a given input string. Consider the transition matrix $P(x)$ for an input symbol $x \in X$, where each entry $P(x)_{ij}$ represents the probability of transitioning from state $i$ to state $j$ given the input $x$. The process is as follows:
+
+\begin{enumerate}
+  \item  Start with a row vector $\mathbf{v}$ representing the initial state distribution. If the initial state is certain, $\mathbf{v}$ is a one-hot vector with a 1 at the position corresponding to the initial state $q_0$.
+
+  \item  For each symbol $x$ in the input string, multiply the current state vector $\mathbf{v}$ by the transition matrix $P(x)$. This results in a new state vector representing the probability distribution over states after processing $x$.
+
+  \begin{align*}
+		  \mathbf{v}' &= \mathbf{v} \cdot P(x)
+  \end{align*}
+
+  \item  After processing the entire input string, the final state vector $\mathbf{v}'$ gives the probability distribution over all states. The probability of being in an accepting state is the sum of the probabilities in $\mathbf{v}'$ corresponding to the accepting states.
+
+\end{enumerate}
+
 
 \subsection{Pumping lemma for Regular Languages }
 
@@ -394,14 +528,40 @@ A regular expression over an alphabet $\Sigma$ is a formal way of representing
 a regular language. It is constructed from members of $\Sigma$ using union
 (denoted by $+$), concatenation, Kleene star, and parentheses for grouping.
 
+A regular expression is a string that can be formed according to the following rules:
+\begin{enumerate}
+	\item $\emptyset$ is a regular expression.
+	\item $\epsilon$ is a regular expression.
+	\item Every element in $\Sigma$ is a regular expression.
+	\item Given two regular expressions $\alpha$ and $\beta$, $\alpha\beta$ is a regular expression.
+	\item Given two regular expressions $\alpha$ and $\beta$, $\alpha \lor \beta$ is a regular expression.
+	\item Given a regular expression $\alpha$, $\alpha^*$ is a regular expression.
+	\item Given a regular expression $\alpha$, $\alpha^+$ is a regular expression.
+	\item Given a regular expression $\alpha$, ($\alpha$) is a regular expression.
+\end{enumerate}
+
+Define the following semantic interpretation function \( L \) for the language of regular expressions:
+
+\begin{enumerate}
+    \item \( L(\emptyset) = \emptyset \), the language that contains no strings.
+    \item \( L(\epsilon) = \{\epsilon\} \), the language that contains just the empty string.
+    \item For any \( c \in \Sigma \), \( L(c) = \{c\} \), the language that contains the single, one-character string \( c \).
+    \item For any regular expressions \( \alpha \) and \( \beta \), \( L(\alpha \beta) = L(\alpha) L(\beta) \). In other words, to form the meaning of the concatenation of two regular expressions, first determine the meaning of each of the constituents. Both meanings will be languages. Then concatenate the two languages together. Recall that the concatenation of two languages \( L_1 \) and \( L_2 \) is \( \{ w = xy \mid x \in L_1 \text{ and } y \in L_2 \} \). Note that, if either \( L(\alpha) \) or \( L(\beta) \) is equal to \( \emptyset \), then the concatenation will also be equal to \( \emptyset \).
+    \item For any regular expressions \( \alpha \) and \( \beta \), \( L(\alpha \cup \beta) = L(\alpha) \cup L(\beta) \). Again we form the meaning of the larger expression by first determining the meaning of each of the constituents. Each of them is a language. The meaning of \( \alpha \cup \beta \) then, as suggested by our choice of the character \( \cup \) as an operator, is the union of the two constituent languages.
+    \item For any regular expression \( \alpha \), \( L(\alpha^*) = (L(\alpha))^* \), where \( * \) is the Kleene star operator defined in Section 2.2.5. So \( L(\alpha^*) \) is the language that is formed by concatenating together zero or more strings drawn from \( L(\alpha) \).
+    \item For any regular expression \( \alpha \), \( L(\alpha^+) = L(\alpha \alpha^*) = L(\alpha) (L(\alpha))^* \). If \( L(\alpha) \) is equal to \( \emptyset \), then \( L(\alpha^+) \) is also equal to \( \emptyset \). Otherwise \( L(\alpha^+) \) is the language that is formed by concatenating together one or more strings drawn from \( L(\alpha) \).
+    \item For any regular expression \( \alpha \), \( L((\alpha)) = L(\alpha) \). In other words, parentheses have no effect on meaning except to group the constituents in an expression.
+\end{enumerate}
+
+
 \begin{itemize}
-	 
 		\item * asterisk indicates zero or more occurrences of the preceding element.
 		For example, ab*c matches "ac", "abc", "abbc", "abbbc", and so on. 
 
 		\item + the plus sign indicates one or more occurrences of the preceding element.
 		For example, ab+c matches "abc", "abbc", "abbbc", and so on, but not "ac". 
 \end{itemize}
+
 
 \subsection{Building Regex from FSM}
 
@@ -485,25 +645,24 @@ fsmtoregexheuristic(M: FSM) =
 \includegraphics[width=\textwidth]{img/fsmtoregex1.png}
 \includegraphics[width=\textwidth]{img/fsmtoregex2.png}
 
-\section{Context-free languages and PDA}
+\section{PDA (Pushdown automata)}
 
-\subsection{PDA} 
+\subsection{Definition of a (Nondeterministic) PDA }
 
-\subsubsection{Definition of a (Nondeterministic) PDA }
+A pushdown automaton, or PDA, is a finite state machine that has been augmented
+by a single stack. In a minute, we will present the formal definition of the
+PDA model that we will use. But, before we do that, one caveat to readers of
+other books is in order. There are several competing PDA definitions, from
+which we have chosen one to present here. All are provably equivalent, in the
+sense that, for all $i$ and $j$, if there exists a version$i$ PDA that accepts
+some language $L$ then there also exists a version$j$ PDA that accepts $L$.
+We’ll return to this issue in Section 12.5, where we will mention a few of the
+other models and sketch an equivalence proof. For now, simply beware of the
+fact that other definitions are also in widespread use.
 
-A  pushdown automaton, or PDA, is a finite state machine that has been
-augmented by a single stack.  In a minute, we will present the formal
-definition of the PDA model that we will use.  But, before we do that, one
-caveat to readers of other books is in order.  There are several competing PDA
-definitions, from which we have chosen one to present here.  All are provably
-equivalent, in the sense that, for all i and j, if there exists a versioni PDA
-that accepts some language L then there also exists a versionj PDA that accepts
-L.  We’ll return to this issue in Section 12.5, where we will mention a few of
-the other models and sketch an equivalence proof.  For now, simply beware of
-the fact that other definitions are also in widespread use. 
- 
-We will use the following definition:  A pushdown automaton (or PDA) M is a
-sixtuple (K, $\Sigma$, $\Sum$, , s, A), where: 
+
+We will use the following definition: A pushdown automaton (or PDA) $M$ is a
+six-tuple $(K, \Sigma, \Gamma, \Delta, s, A)$, where:
  
 \begin{itemize}
 	\item $K$ is a finite set of states, 
@@ -514,35 +673,28 @@ sixtuple (K, $\Sigma$, $\Sum$, , s, A), where:
 	\item $\Delta$ is the transition relation.  It is a finite subset of  
 \begin{align*}
 \left(
-    \left( K \times (\Sigma \cup \{\epsilon\}) \times \Gamma^* \right),
-    \times
+		\left( K \times (\Sigma \cup \{\epsilon\}) \times \Gamma  \right) \times \left( K \times \Gamma^*  \right)
 \right)
 \end{align*}
 \end{itemize}
 
- We will use the following notational convention for describing M’s stack as a
- string:  The top of the stack is to the left of the string
+We will use the following notational convention for describing $M$’s stack as a
+string: The top of the stack is to the left of the string.
 
-If a sequence c1c2…cn of characters is pushed onto the stack, they will be
-pushed rightmost first, so if the value of the stack before the push was s, the
-value after the push will be c1c2…cns.   
+If a $c_1c_2\ldots c_n$ of characters is pushed onto the stack, they
+will be pushed rightmost first, so if the value of the stack before the push
+was $s$, the value after the push will be $c_1c_2\ldots c_ns$.
 
-Note two things about what a transition ((q1, c, $\gamma_1$), (q2, $\gamma_2$))
-says about how M manipulates its stack:
- 
-• M may only take the transition if the string $\gamma_1$ matches the current top of
-the stack.  If it does, and the transition is taken, then M pops $\gamma_1$ and then
-pushes $\gamma_2$.  M cannot “peek” at the top of its stack without popping off the
-values that it examines. 
- 
-• If $\gamma_1$ = $\epsilon$, then M must match $\epsilon$ against the top of the stack.  But $\epsilon$ matches
-everywhere.  So letting $\gamma_1$ be $\epsilon$ is equivalent to saying “without bothering to
-check the current value of the stack”.  It is not equivalent to saying, “if the
-stack is empty.”  In our definition, there is no way to say that directly,
-although we will see that we can create a way by letting M, before it does
-anything else, push a special marker onto the stack.  Then, whenever that
-marker is on the top of the stack, the stack is otherwise empty. 
+Note two things about what a transition $((q_1, c_1, c_2), (q_2, \gamma))$
+says about how $M$ manipulates its stack:
 
+\begin{itemize}
+  \item $M$ may only take the transition if the character $c_2$ matches the current top of the stack. If it does, and the transition is taken, then $M$ pops $c_2$ and then pushes $\gamma$. $M$ cannot “peek” at the top of its stack without popping off the values that it examines.
+  \item If $c_2 = \epsilon$, then $M$ must match $\epsilon$ against the top of the stack. But $\epsilon$ matches everywhere. So letting $\gamma$ be $\epsilon$ is equivalent to saying “without bothering to check the current value of the stack”. It is not equivalent to saying, “if the stack is empty.” In our definition, there is no way to say that directly, although we will see that we can create a way by letting $M$, before it does anything else, push a special marker onto the stack. Then, whenever that marker is on the top of the stack, the stack is otherwise empty.
+\end{itemize}
 
+$C$ is an accepting computation iff $C = (s, w, \alpha)|-_{M}^{*}(q, \epsilon, \beta)$, for some $q \in A$. 
+In our definition there are no restrictions on final stack contents. In other words, PDA accepts
+if it reaches the accepting configuration with no regard to the stack contents.
 
 \end{document}
