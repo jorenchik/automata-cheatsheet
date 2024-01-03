@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[hidelinks,12pt]{article}
 
 \usepackage{amsmath, amsthm, amssymb, amsfonts}
 \usepackage{thmtools}
@@ -16,6 +16,7 @@
 
 \setlength{\parindent}{0pt} % Removes the paragraph indent
 \setlength{\parskip}{1em} % Adds vertical space between paragraphs
+
 % The parskip package already sets the parskip to a non-zero value.
 
 
@@ -306,55 +307,73 @@ We can apply \texttt{ndfsmtodfsm} to \( M \) as follows:
     \item \( s' = \varepsilon(s) = \{q_1, q_2, q_7\} \).
 
     \item Compute \( \delta' \):
-    $ \text{active-states} = \{\{q_1, q_2, q_7\}\}. \text{ Consider } \{q_1, q_2, q_7\}: $
+    $ \text{active-states} = \{\{q_1, q_2, q_7\}\}. 
+
+		\text{ Consider } \{q_1, q_2, q_7\}: $
     $ ((\{q_1, q_2, q_7\}, a), \emptyset). $
     $ ((\{q_1, q_2, q_7\}, b), \{q_1, q_2, q_3, q_5, q_7, q_8\}). $
     $ ((\{q_1, q_2, q_7\}, c), \emptyset). $
 
-    $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}\}. \text{ Consider } \emptyset: $
+    $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}\}. 
+
+				\text{ Consider } \emptyset: $
     $ ((\emptyset, a), \emptyset). $
     $ /* \emptyset \text{ is a dead state and we will generally omit it.} $
     $ ((\emptyset, b), \emptyset). $
     $ ((\emptyset, c), \emptyset). $
 
     $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
-    $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}\}. \text{ Consider } \{q_2, q_4, q_6, q_7\}: $
+    $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}\}.$ 
+
+		$\text{ Consider } \{q_2, q_4, q_6, q_7\}: $
     $ ((\{q_2, q_4, q_6, q_7\}, a), \emptyset). $
     $ ((\{q_2, q_4, q_6, q_7\}, b), \{q_3, q_5, q_8\}). $
     $ ((\{q_2, q_4, q_6, q_7\}, c), \{q_2, q_7\}). $
 
     $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
     $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}, \{q_3, q_5, q_8\}, $
-    $ \{q_2, q_7\}\}. \text{ Consider } \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}: $
+    $ \{q_2, q_7\}\}.$
+
+				$ \text{ Consider } \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}: $
     $ ((\{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, a), \{q_2, q_4, q_6, q_7\}). $
     $ ((\{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, b), \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}). $
     $ ((\{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, c), \{q_2, q_4, q_7\}). $
 
     $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
     $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}, \{q_3, q_5, q_8\}, $
-    $ \{q_2, q_7\}, \{q_2, q_4, q_7\}\}. \text{ Consider } \{q_4\}: $
+    $ \{q_2, q_7\}, \{q_2, q_4, q_7\}\}.$
+
+				$ \text{ Consider } \{q_4\}: $
     $ ((\{q_4\}, a), \emptyset). $
     $ ((\{q_4\}, b), \emptyset). $
     $ ((\{q_4\}, c), \{q_2, q_7\}). $
 
-    \text{active-states did not change. Consider } \{q_3, q_5, q_8\}:
+				\text{active-states did not change.} 
+
+				\text{Consider} $ \{q_3, q_5, q_8\}:$
     $ ((\{q_3, q_5, q_8\}, a), \{q_2, q_4, q_6, q_7\}). $
     $ ((\{q_3, q_5, q_8\}, b), \{q_2, q_6, q_7\}). $
     $ ((\{q_3, q_5, q_8\}, c), \{q_4\}). $
 
     $ \text{active-states} = \{\{q_1, q_2, q_7\}, \emptyset, \{q_1, q_2, q_3, q_5, q_7, q_8\}, \{q_2, q_4, q_6, q_7\}, $
     $ \{q_1, q_2, q_3, q_5, q_6, q_7, q_8\}, \{q_4\}, \{q_3, q_5, q_8\}, $
-    $ \{q_2, q_7\}, \{q_2, q_4, q_7\}, \{q_2, q_6, q_7\}\}. \text{ Consider } \{q_2, q_7\}: $
+    $ \{q_2, q_7\}, \{q_2, q_4, q_7\}, \{q_2, q_6, q_7\}\}.$ 
+
+		\text{ Consider } \{q_2, q_7\}: $
     $ ((\{q_2, q_7\}, a), \emptyset). $
     $ ((\{q_2, q_7\}, b), \{q_3, q_5, q_8\}). $
     $ ((\{q_2, q_7\}, c), \emptyset). $
 
-    \text{active-states did not change. Consider } \{q_2, q_4, q_7\}:
+		\text{active-states did not change.} 
+
+				\text{ Consider } \{q_2, q_4, q_7\}:
     $ ((\{q_2, q_4, q_7\}, a), \emptyset). $
     $ ((\{q_2, q_4, q_7\}, b), \{q_3, q_5, q_8\}). $
     $ ((\{q_2, q_4, q_7\}, c), \{q_2, q_7\}). $
 
-    \text{active-states did not change. Consider } \{q_2, q_6, q_7\}:
+    \text{active-states did not change. }
+
+    \text{Consider } \{q_2, q_6, q_7\}:
     $ ((\{q_2, q_6, q_7\}, a), \emptyset). $
     $ ((\{q_2, q_6, q_7\}, b), \{q_3, q_5, q_8\}). $
     $ ((\{q_2, q_6, q_7\}, c), \{q_2, q_7\}). $
